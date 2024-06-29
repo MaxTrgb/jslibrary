@@ -14,25 +14,3 @@
     margin-left: auto;
 }
 
-.gridItems {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.item img {
-    max-width: 200px;
-    max-height: 200px;
-    object-fit: cover;
-}
-
-.todo h1,
-div {
-    text-align: center;
-}
-.item p:first-of-type{
-    color: red;
-}
-.item p:last-of-type{
-    color: grey;
-}

@@ -1,6 +1,6 @@
 import React from 'react';
-import './Todo.css';
 import CheckAvailable from './Check-available';
+import './Product.css';
 
 const ProductsItem = ({ imgSrc, title, price, items }) => {
 
