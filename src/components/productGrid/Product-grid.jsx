@@ -1,15 +1,17 @@
 import React from 'react';
 import ProductsItem from './Products-item';
 import './Product.css';
+import ProductAdd from './Product-add';
 
 
 const ProductGrid = () => {
     return (
         <div className="product">
-                <h1>Products</h1>
+            <ProductAdd />
+            <div className='gridContainer'>
                 <div className="gridItems">
                     <ProductsItem
-                        imgSrc="https://content1.rozetka.com.ua/goods/images/big_tile/442102428.jpg"
+                        imgSrc="https://content2.rozetka.com.ua/goods/images/big_tile/446854857.jpg"
                         title="Моноблок Lenovo 24 AIO V50a-24"
                         price="20 999₴"
                         items={50} />
@@ -24,6 +26,8 @@ const ProductGrid = () => {
                         price="44 999₴"
                         items={0} />
                 </div>
+            </div>
+
         </div>
     );
 }
