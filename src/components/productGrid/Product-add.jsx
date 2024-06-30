@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
+import './Product.css';
 
 const ProductAdd = () => {
     const [showForm, setShowForm] = useState(false);
 
     const toggleForm = () => {
-        setShowForm(!showForm);
+        setShowForm((prevShowForm) => !prevShowForm);
     };
-    <div className="addProduct" style={{ visibility: showForm ? 'visible' : 'hidden' }}>
-        {<h1>Lorem</h1>
-        }
-    </div>
     return (
-        <div className='addProduct'>
-            <form>
-                <button onClick={toggleForm}>Add Product</button>
-            </form>
+        <div>
+            <button onClick={toggleForm}>
+                {showForm ? 'Hide Form' : 'Show Form'}
+            </button>
+            {showForm && (
+                <form>
+                    <div>
+                        <label>
+                            Product Name:
+                            <input type="text" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Product Price:
+                            <input type="number" />
+                        </label>
+                    </div>
+                </form>
+            )}
         </div>
     );
 };

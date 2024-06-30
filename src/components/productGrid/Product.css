@@ -16,7 +16,7 @@ div {
     text-align: center;
 }
 .item p:first-of-type{
-    color: red;
+    color: brown;
 }
 .item p:last-of-type{
     color: grey;
@@ -33,4 +33,11 @@ div {
     display: flex;
     gap: 10px;
     margin-left: 660px;
+    width: 500px;
+    height: 200px;
+}
+.addProductForm{
+    background-color: brown;
+    width: 500px;
+    height: 200px;
 }
