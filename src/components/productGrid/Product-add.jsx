@@ -13,7 +13,7 @@ const ProductAdd = () => {
                 {showForm ? 'Hide Form' : 'Show Form'}
             </button>
             {showForm && (
-                <form>
+                <form className='addProductForm'>
                     <div>
                         <label>
                             Product Name:
@@ -25,6 +25,23 @@ const ProductAdd = () => {
                             Product Price:
                             <input type="number" />
                         </label>
+                    </div>
+                    <div>
+                        <label>
+                            Product Availability:
+                            <input type="number" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Product Img link:
+                            <input type="number" />
+                        </label>
+                    </div>
+                    <div>
+                        <button>
+                            Add Product
+                        </button>
                     </div>
                 </form>
             )}

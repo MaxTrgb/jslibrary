@@ -11,33 +11,18 @@
     object-fit: cover;
 }
 
-.todo h1,
-div {
-    text-align: center;
-}
 .item p:first-of-type{
     color: brown;
 }
 .item p:last-of-type{
     color: grey;
 }
-.gridContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    margin-top: 300px;
+.gridContainer {  
+    margin-top: 30px;
 }
-.addProduct{
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-    margin-left: 660px;
-    width: 500px;
-    height: 200px;
-}
+
 .addProductForm{
-    background-color: brown;
-    width: 500px;
-    height: 200px;
+    display: flex;
+    position: fixed;
+    z-index: 1;    
 }
