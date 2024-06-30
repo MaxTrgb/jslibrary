@@ -8,10 +8,13 @@ const ProductsItem = ({ imgSrc, title, price, details, items }) => {
     return (
         <div className="item">
             <img src={imgSrc} alt="" />
-            <h2>{title}</h2>
-            <p id='price'>{price}</p>
-            <ProductDetails details={details} />
-            <p id='check'><CheckAvailable items={items} /></p>
+            <div className='iteminfo'>
+                <h3>{title}</h3>
+                <p id='price'>{price}</p>
+                <ProductDetails details={details} />
+                <p id='check'><CheckAvailable items={items} /></p>
+            </div>
+
         </div>
     );
 }

@@ -8,7 +8,7 @@ function ProductDetails({details}) {
         setShowForm((prevShowForm) => !prevShowForm);
     };
     return (
-        <div>
+        <div className='detailsContainer'>
             <button className='detailsButton' onClick={toggleForm}>
                 {showForm ? 'Details' : 'Details'}
             </button>
