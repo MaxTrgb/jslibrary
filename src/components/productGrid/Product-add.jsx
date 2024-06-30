@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Product.css';
+import ProductFormItem from './Product-form-item';
 
 const ProductAdd = () => {
     const [showForm, setShowForm] = useState(false);
@@ -10,34 +11,14 @@ const ProductAdd = () => {
     return (
         <div>
             <button onClick={toggleForm}>
-                {showForm ? 'Hide Form' : 'Show Form'}
+                {showForm ? 'Close' : 'Add product'}
             </button>
             {showForm && (
                 <form className='addProductForm'>
-                    <div>
-                        <label>
-                            Product Name:                            
-                        </label>
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <label>
-                            Product Price:                            
-                        </label>
-                        <input type="number" />
-                    </div>
-                    <div>
-                        <label>
-                            Product Availability:                            
-                        </label>
-                        <input type="number" />
-                    </div>
-                    <div>
-                        <label>
-                            Product Img link:                            
-                        </label>
-                        <input type="number" />
-                    </div>
+                    <ProductFormItem title="Product Name:"/>
+                    <ProductFormItem title="Product Price:"/>                   
+                    <ProductFormItem title="Product Img link:"/>
+                    <ProductFormItem title="Product Quantity:"/>
                     <div>
                         <button>
                             Add Product
