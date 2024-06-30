@@ -9,8 +9,8 @@ function ProductDetails({details}) {
     };
     return (
         <div>
-            <button onClick={toggleForm}>
-                {showForm ? 'Close' : 'Details'}
+            <button className='detailsButton' onClick={toggleForm}>
+                {showForm ? 'Details' : 'Details'}
             </button>
             {showForm && (
                 <form className='productDetails'>{details} </form>
