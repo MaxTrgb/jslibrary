@@ -16,27 +16,27 @@ const ProductAdd = () => {
                 <form className='addProductForm'>
                     <div>
                         <label>
-                            Product Name:
-                            <input type="text" />
+                            Product Name:                            
                         </label>
+                        <input type="text" />
                     </div>
                     <div>
                         <label>
-                            Product Price:
-                            <input type="number" />
+                            Product Price:                            
                         </label>
+                        <input type="number" />
                     </div>
                     <div>
                         <label>
-                            Product Availability:
-                            <input type="number" />
+                            Product Availability:                            
                         </label>
+                        <input type="number" />
                     </div>
                     <div>
                         <label>
-                            Product Img link:
-                            <input type="number" />
+                            Product Img link:                            
                         </label>
+                        <input type="number" />
                     </div>
                     <div>
                         <button>

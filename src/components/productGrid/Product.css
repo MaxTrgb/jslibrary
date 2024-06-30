@@ -23,6 +23,21 @@
 
 .addProductForm{
     display: flex;
+    flex-direction: column;
     position: fixed;
-    z-index: 1;    
+    z-index: 1;  
+    background-color: wheat;  
+    width: 500px;
+    height: 200px;    
+}
+.addProductForm div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+.product{
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
