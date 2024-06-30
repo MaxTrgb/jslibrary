@@ -117,7 +117,7 @@ const ProductGrid = () => {
                         title="Моноблок Apple iMac 24 М1 4.5К"
                         price="44 999₴"
                         details={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor..."}
-                        items={0} />                   
+                        items={0} />
                 </div>
             </div>
 

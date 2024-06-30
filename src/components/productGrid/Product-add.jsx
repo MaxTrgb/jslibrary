@@ -15,10 +15,10 @@ const ProductAdd = () => {
             </button>
             {showForm && (
                 <form className='addProductForm'>
-                    <ProductFormItem title="Product Name:"/>
-                    <ProductFormItem title="Product Price:"/>                   
-                    <ProductFormItem title="Product Img link:"/>
-                    <ProductFormItem title="Product Quantity:"/>
+                    <ProductFormItem title="Product Name:" />
+                    <ProductFormItem title="Product Price:" />
+                    <ProductFormItem title="Product Img link:" />
+                    <ProductFormItem title="Product Quantity:" />
                     <div>
                         <button>
                             Add Product

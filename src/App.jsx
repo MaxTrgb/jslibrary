@@ -5,9 +5,9 @@ import ProductGrid from "./components/productGrid/Product-grid";
 function App() {
   return (
     <div>
-    {/* <Example /> */}
-    {/* <TodoList /> */}
-    <ProductGrid />
+      {/* <Example /> */}
+      {/* <TodoList /> */}
+      <ProductGrid />
     </div>
   );
 }

@@ -30,6 +30,11 @@
     justify-content: space-between;
 }
 
+.item:hover {
+    border: 1px solid lightblue;
+    box-shadow: 10px 10px 5px lightblue;
+}
+
 .item h3 {
     display: flex;
     justify-content: center;
@@ -70,6 +75,14 @@
     margin-right: 200px;
 }
 
+.product button {
+    border-color: white;
+}
+
+.product button:hover {
+    border-color: lightblue;
+}
+
 .productDetails {
     display: flex;
     position: fixed;
@@ -78,10 +91,16 @@
     width: 300px;
     height: 100px;
 }
-.detailsContainer form{
-   margin-left: -120px;
+
+.detailsContainer form {
+    margin-left: -120px;
 }
+
 .detailsButton {
-    border: none;
-    background-color: white;
+    border-color: white;
+
+}
+
+.detailsButton:hover {
+    border-color: lightblue;
 }

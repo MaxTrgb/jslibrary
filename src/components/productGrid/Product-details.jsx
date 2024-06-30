@@ -1,6 +1,6 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 
-function ProductDetails({details}) { 
+function ProductDetails({ details }) {
 
     const [showForm, setShowForm] = useState(false);
 
