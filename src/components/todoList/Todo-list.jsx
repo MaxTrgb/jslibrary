@@ -14,21 +14,23 @@ const TodoList = () => {
     };
 
     return (
-        <div className="todo">
-            <h1>Todo List</h1>
-            <TodoCreate addTask={addTask}/>
-            <div>
-                <TodoFilter />
-                <div className="list">
-                    {taskList.map(task => (
-                        <TodoItem
-                            key={task.id}
-                            task={task}
-                        />
-                    ))}
+        <div className="todoContainer">
+            <div className="todo">
+                <h1>Todo List</h1>
+                <TodoCreate addTask={addTask} />
+                <div>
+                    <TodoFilter />
+                    <div className="list">
+                        {taskList.map(task => (
+                            <TodoItem
+                                key={task.id}
+                                task={task}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
 
     )

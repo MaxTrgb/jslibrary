@@ -9,12 +9,12 @@ const TodoCreate = ({addTask}) => {
     };
 
     return (
-        <div>
+        <div className="addFieldButton">
             <input type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <button onClick={addTaskHandler}>add</button>
+            <button onClick={addTaskHandler}>Add</button>
         </div>
     )
 }

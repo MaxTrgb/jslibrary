@@ -1,16 +1,62 @@
 .todo {
-    max-width: 700px;
+    align-items: center;
+    height: 500px;
+    width: 1500px;
     margin: 0 auto;
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.todo h1 {
+    text-align: center;
 }
 
 .task-item {
     display: flex;
-    gap: 10px;
     align-items: center;
-    padding: 10px 0;
+    gap: 10px;
+    justify-content: space-between;    
+    height: 50px;
+    background-color: yellowgreen;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.task-item button{
+    margin-right: 10px;
 }
 
-.task-item button {
-    margin-left: auto;
+.addFieldButton {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
+.addFieldButton button {
+    width: 10%;
+    border-radius: 10px;
+}
+
+.addFieldButton input {
+    width: 90%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.filter button {
+    width: 100%;
+    border-radius: 5px;
+    height: 25px;
+}
