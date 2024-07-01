@@ -13,7 +13,9 @@ function ProductDetails({ details }) {
                 {showForm ? 'Details' : 'Details'}
             </button>
             {showForm && (
-                <form className='productDetails'>{details} </form>
+                <form className='productDetails'>
+                    <p>{details}</p>
+                </form>
             )}
         </div>
     );

@@ -89,9 +89,13 @@
     z-index: 1;
     background-color: lightblue;
     width: 300px;
-    height: 100px;
+    height: auto;
+    text-align: center;        
 }
-
+.productDetails p {
+    margin: 10px;
+    color: grey;
+}
 .detailsContainer form {
     margin-left: -120px;
 }
