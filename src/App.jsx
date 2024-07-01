@@ -6,8 +6,8 @@ function App() {
   return (
     <div>
       {/* <Example /> */}
-      {/* <TodoList /> */}
-      <ProductGrid />
+      <TodoList />
+      {/* <ProductGrid /> */}
     </div>
   );
 }
