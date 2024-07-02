@@ -16,7 +16,10 @@ const TodoList = () => {
     return (
         <div className="todoContainer">
             <div className="todo">
-                <h1>Todo List</h1>
+                <div className="logo">
+                    <img src="https://cdn-icons-png.freepik.com/256/8476/8476658.png?semt=ais_hybrid" alt="" />
+                    <h1>Todo List</h1>
+                </div>
                 <TodoCreate addTask={addTask} />
                 <div>
                     <TodoFilter />
