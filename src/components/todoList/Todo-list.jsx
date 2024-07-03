@@ -7,12 +7,48 @@ import { taskList } from "./taskList";
 
 
 const TodoList = () => {
-    const [task, setTasks] = useState(taskList);
+    const [tasks, setTasks] = useState(taskList);
 
-    const addTask = () => {
-        alert("add task");
+    const addTask = (title) => {
+        setTasks([...tasks,
+        {
+            id: tasks.length + 1,
+            title: title,
+            completed: false
+        }]);
+    };
+    const deleteTask = (id) => {
+        const newTasks = tasks.filter(task => task.id !== id);
+        setTasks(newTasks);
     };
 
+    const toggleComplete = (id) => {
+        const newTasks = tasks.map(task => {
+            if (task.id === id) {
+                return {
+                    ...task,
+                    completed: !task.completed
+                }
+
+            }
+            return task;
+        });
+
+        setTasks(newTasks);
+    }
+    const updateTask = (id, newTitle) =>{
+        const newTasks = tasks.map(task =>{
+            if(task.id === id){
+                return{
+                    ...task,
+                    title: newTitle
+                }
+            }
+            return task;
+        })
+
+        setTasks(newTasks);
+    }
     return (
         <div className="todoContainer">
             <div className="todo">
@@ -24,10 +60,13 @@ const TodoList = () => {
                 <div>
                     <TodoFilter />
                     <div className="list">
-                        {taskList.map(task => (
+                        {tasks.map(task => (
                             <TodoItem
                                 key={task.id}
                                 task={task}
+                                deleteTask={deleteTask}
+                                toggleComplete={toggleComplete}
+                                updateTask={updateTask}
                             />
                         ))}
                     </div>
