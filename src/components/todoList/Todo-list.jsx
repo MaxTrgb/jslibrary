@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect }  from "react";
+
 import "./Todo.css";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
@@ -7,7 +8,18 @@ import { taskList } from "./taskList";
 
 
 const TodoList = () => {
-    const [tasks, setTasks] = useState(taskList);
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(()=>{
+        const storedTasks = localStorage.getItem('tasks');
+        if (storedTasks) {
+            setTasks(storedTasks ? JSON.parse(storedTasks) : taskList);
+        }
+    }, []);
+
+    useEffect(()=>{
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
 
     const addTask = (title) => {
         setTasks([...tasks,
@@ -21,7 +33,6 @@ const TodoList = () => {
         const newTasks = tasks.filter(task => task.id !== id);
         setTasks(newTasks);
     };
-
     const toggleComplete = (id) => {
         const newTasks = tasks.map(task => {
             if (task.id === id) {

@@ -7,6 +7,9 @@ const TodoItem = ({ task, deleteTask, toggleComplete, updateTask }) => {
     const [title, setTitle] = useState(task.title);
 
     const saveClickHandler = () => {
+        if (title.trim().length < 3) {
+            return;
+        }
         setIsEditing(false);
         updateTask(task.id, title);
     }
