@@ -2,7 +2,7 @@ import React from 'react';
 
 function ProductFormItem({title}) {
     return (
-        <div>
+        <div className='productFormItem'>
             <label>
                {title}
             </label>

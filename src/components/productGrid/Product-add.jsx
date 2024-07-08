@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Product.css';
 import ProductFormItem from './Product-form-item';
 
+
 const ProductAdd = () => {
     const [showForm, setShowForm] = useState(false);
 
@@ -9,7 +10,7 @@ const ProductAdd = () => {
         setShowForm((prevShowForm) => !prevShowForm);
     };
     return (
-        <div>
+        <div className='myHeader'>
             <button onClick={toggleForm}>
                 {showForm ? 'Close' : 'Add product'}
             </button>
@@ -19,7 +20,7 @@ const ProductAdd = () => {
                     <ProductFormItem title="Product Price:" />
                     <ProductFormItem title="Product Img link:" />
                     <ProductFormItem title="Product Quantity:" />
-                    <div>
+                    <div className='addProductButtonCntainer'>
                         <button>
                             Add Product
                         </button>

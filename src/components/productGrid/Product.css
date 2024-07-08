@@ -26,6 +26,16 @@
     height: 442px;
 }
 
+.myHeader {
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+.myHeader button {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
 .hovered {
     height: 100%;
 }
@@ -63,21 +73,49 @@
     position: fixed;
     z-index: 1;
     background-color: lightblue;
-    width: 500px;
-    height: 200px;
-}
-
-.addProductForm div {
-    display: flex;
-    justify-content: space-between;
+    width: 400px;
+    height: 450px;
     align-items: center;
     margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+.productFormItem {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    font-family: 'Dosis';
+    width: 90%;
+}
+.productFormItem input{
+    border-radius: 5px;
+}
+.addProductForm button {
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: white;
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    font-size: large;
+    font-family: 'Dosis';
+}
+
 
 .product {
     margin-top: 20px;
     margin-left: 200px;
     margin-right: 200px;
+}
+
+.addProductButtonCntainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .product button {
@@ -86,12 +124,16 @@
     height: 50px;
     width: 150px;
     border-radius: 50px;
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease, outline 0.3s ease;
+    font-family: 'Dosis';
+    font-weight: 700;
+    font-size: large;
 }
 
 .product button:hover {
     border-color: lightblue;
-    box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 5px 2px gray;
 }
 
 .productDetails {
