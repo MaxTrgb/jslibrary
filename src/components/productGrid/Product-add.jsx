@@ -26,6 +26,7 @@ const ProductAdd = () => {
                     </div>
                 </form>
             )}
+            <div class="line-1"></div>
         </div>
     );
 };

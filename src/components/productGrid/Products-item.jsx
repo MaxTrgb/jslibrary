@@ -14,7 +14,7 @@ const ProductsItem = ({ imgSrc, title, price, details, items }) => {
     };
     
     return (
-        <div className="item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className={`item ${hovered ? 'hovered' : ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <img src={imgSrc} alt="" />
             <h3>{title}</h3>
             <p id='price'>{price}</p>
