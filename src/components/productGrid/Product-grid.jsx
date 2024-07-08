@@ -17,9 +17,9 @@ const ProductGrid = () => {
                             key={product.id}
                             imgSrc={product.imgSrc}
                             title={product.title}
-                            price={product.price}
-                            details={product.details}
+                            price={product.price}                            
                             items={product.items}
+                            details={product.details}
                         />
                     ))}
                 </div>

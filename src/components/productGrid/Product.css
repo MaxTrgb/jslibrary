@@ -1,40 +1,36 @@
 .gridItems {
     display: grid;
     grid-template-columns: repeat(6, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 10px;
     margin-top: 20px;
-
 }
 
 .item img {
-    object-fit: cover;
+    object-fit:contain;
     width: 200px;
-    height: auto;
+    height: 200px;
     margin: 30px;
 }
-
-.iteminfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .item {
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid lightgray;
-    box-shadow: 10px 10px 5px lightgray;
     justify-content: center;
     width: 100%;
     justify-content: space-between;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, outline 0.3s ease; 
+    box-sizing: border-box;
 }
-
+.item:hover .productDetails {
+    visibility: visible;
+}
 .item:hover {
-    border: 1px solid lightblue;
-    box-shadow: 10px 10px 5px lightblue;
+    outline: 2px solid lightgray; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); 
+    outline-offset: -2px; 
 }
-
 .item h3 {
     display: flex;
     justify-content: center;
@@ -82,23 +78,11 @@
 .product button:hover {
     border-color: lightblue;
 }
-
 .productDetails {
-    display: flex;
-    position: fixed;
-    z-index: 1;
-    background-color: lightblue;
-    width: 300px;
-    height: auto;
-    text-align: center;        
-}
-.productDetails p {
+    visibility: hidden;
     margin: 10px;
-    color: grey;
 }
-.detailsContainer form {
-    margin-left: -120px;
-}
+
 
 .detailsButton {
     border-color: white;

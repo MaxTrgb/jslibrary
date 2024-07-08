@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CheckAvailable from './Check-available';
 import './Product.css';
-import ProductDetails from './Product-details';
 
 const ProductsItem = ({ imgSrc, title, price, details, items }) => {
+    const [hovered, setHovered] = useState(false);
 
+    const handleMouseEnter = () => {
+        setHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setHovered(false);
+    };
+    
     return (
-        <div className="item">
+        <div className="item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <img src={imgSrc} alt="" />
-            <div className='iteminfo'>
-                <h3>{title}</h3>
-                <p id='price'>{price}</p>
-                <ProductDetails details={details} />
-                <p id='check'><CheckAvailable items={items} /></p>
-            </div>
-
+            <h3>{title}</h3>
+            <p id='price'>{price}</p>
+            <p id='check'><CheckAvailable items={items} /></p>
+            {hovered && <p className='productDetails'>{details}</p>}
         </div>
     );
 }
