@@ -9,7 +9,7 @@
     object-fit: contain;
     width: 200px;
     height: 200px;
-    margin: 30px;
+    margin: 10px;
 }
 
 .item {
@@ -23,7 +23,7 @@
     border-radius: 10px;
     transition: box-shadow 0.3s ease, outline 0.3s ease;
     box-sizing: border-box;
-    height: 442px;
+    height: 427px;
 }
 
 .myHeader {
