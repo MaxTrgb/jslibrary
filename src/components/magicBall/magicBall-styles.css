@@ -14,6 +14,8 @@
     background-image: -webkit-radial-gradient(circle closest-side, #12356d, #000);
     background-image: radial-gradient(circle closest-side, #12356d, #000);
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .switchLanguage-item {
@@ -36,7 +38,7 @@
 .switchLanguage {
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 48,5%;
     text-align: center;
     box-shadow: 0 0 10px 2px #194795;
     background-color: black;
@@ -46,4 +48,48 @@
 .switchLanguage-item:hover {
     text-shadow: 0 -1px 0 #000;
     color: #90aacf;
+}
+
+.switchLanguage-item.active {
+    text-shadow: 0 -1px 0 #000;
+    color: #90aacf;
+    background-color: #194795;
+    background-image: -webkit-linear-gradient(bottom, #194795, #0e2953);
+    background-image: linear-gradient(to top, #194795, #0e2953);
+}
+.ballContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 1px 1px 100px 1px white;
+}
+.shakeBallButton {
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ballInBall {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 178px;
+    height: 178px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ball-text {
+    display: inline-block;
+    position: relative;
+    font-size: 1.125rem;
+    color: #c6dcff;
+    line-height: 22.5px;
+    vertical-align: middle;
+}
+.ballInBall:hover{
+    cursor: pointer;
 }
