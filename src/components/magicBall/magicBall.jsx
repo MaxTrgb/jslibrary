@@ -4,6 +4,9 @@ import './magicBall-styles.css';
 function MagicBall() {
     const [activeLanguage, setActiveLanguage] = useState('en');
     const [message, setMessage] = useState('Ask a question');
+    const [isShaking, setIsShaking] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+
     const messages = ["Yes", "No", "Maybe", "Ask later"];
 
     const handleLanguageChange = (event, language) => {
@@ -13,7 +16,14 @@ function MagicBall() {
 
     const changeMessage = () => {
         const randomIndex = Math.floor(Math.random() * messages.length);
-        setMessage(messages[randomIndex]);    
+        setMessage(messages[randomIndex]);
+        setIsVisible(false);
+        setIsShaking(true);
+        setTimeout(() => {
+            setIsShaking(false);
+            setIsVisible(true);
+        }, 1000);
+
     };
 
     return (
@@ -36,21 +46,19 @@ function MagicBall() {
                     ua
                 </a>
             </div>
-            <div className='ballContainer'>
+            <div className={`ballContainer ${isShaking ? 'shake' : ''}`}>
                 <div
                     className='shakeBallButton'
-                    style={{ backgroundImage: "url('https://8-gund.com/assets/img/ball.png')" }}                    
-                    >
+                    style={{ backgroundImage: "url('https://8-gund.com/assets/img/ball.png')" }}
+                >
                     <div
-                        className='ballInBall'
+                        className={`ballInBall ${isVisible ? 'visible' : 'hidden'}`}
                         style={{ backgroundImage: "url('https://8-gund.com/assets/img/ball-hole.png')" }}
                         onClick={changeMessage}
-                        >
-                        <span class="ball-text">{message}</span>
+                    >
+                        <span className="ball-text">{message}</span>
                     </div>
-
                 </div>
-
             </div>
         </div>
     );
