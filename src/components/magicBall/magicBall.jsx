@@ -7,16 +7,20 @@ function MagicBall() {
     const [isShaking, setIsShaking] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
 
-    const messages = ["Yes", "No", "Maybe", "Ask later"];
+    const messages = {
+        en: ["Yes", "No", "Maybe", "Ask later"],
+        ua: ["Так", "Ні", "Можливо", "Спитай пізніше"]
+    };
 
     const handleLanguageChange = (event, language) => {
         event.preventDefault();
         setActiveLanguage(language);
+        setMessage(language === 'en' ? 'Ask a question' : 'Задайте питання');
     };
 
     const changeMessage = () => {
-        const randomIndex = Math.floor(Math.random() * messages.length);
-        setMessage(messages[randomIndex]);
+        const randomIndex = Math.floor(Math.random() * messages[activeLanguage].length);
+        setMessage(messages[activeLanguage][randomIndex]);
         setIsVisible(false);
         setIsShaking(true);
         setTimeout(() => {
