@@ -43,8 +43,7 @@ const ProductAdd = ({ addProduct }) => {
                         </button>
                     </div>
                 </form>
-            )}
-            <div className="line-1"></div>
+            )}            
         </div>
     );
 };

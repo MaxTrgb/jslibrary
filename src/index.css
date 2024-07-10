@@ -12,3 +12,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+header{
+  width: 100%;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+header a{
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: bold;
+}

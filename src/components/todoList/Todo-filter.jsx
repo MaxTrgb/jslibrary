@@ -1,12 +1,21 @@
 import React from 'react';
 import './Todo.css';
+import classNames from 'classnames';
 
-const TodoFilter = () => {
+const TodoFilter = ({setCurrentFilter, currentFilter, filterMap}) => {
+    const filterNames = Object.keys(filterMap);
+    
     return (
         <div className="filter">
-            <button>Todo</button>
-            <button>Done</button>
-            <button>All</button>
+            {filterNames.map((filterName)=>
+                <button 
+                onClick={()=> setCurrentFilter(filterName)}
+                className={classNames({current: currentFilter === filterName})}
+                >
+                    {filterName}
+                </button>
+            )}
+           
         </div>
     );
 }

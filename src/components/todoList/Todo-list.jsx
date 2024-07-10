@@ -9,7 +9,8 @@ import { taskList } from "./taskList";
 
 const TodoList = () => {
     const [tasks, setTasks] = useState([]);
-
+    const [currentFilter, setCurrentFilter] = useState('All');
+    
     useEffect(()=>{
         const storedTasks = localStorage.getItem('tasks');
         if (storedTasks) {
@@ -60,6 +61,11 @@ const TodoList = () => {
 
         setTasks(newTasks);
     }
+    const filterMap ={
+        All: ()=>true,
+        Todo: task => !task.completed,
+        Done: task => task.completed
+    }
     return (
         <div className="todoContainer">
             <div className="todo">
@@ -69,9 +75,13 @@ const TodoList = () => {
                 </div>
                 <TodoCreate addTask={addTask} />
                 <div>
-                    <TodoFilter />
+                    <TodoFilter 
+                    setCurrentFilter={setCurrentFilter} 
+                    currentFilter={currentFilter} 
+                    filterMap={filterMap}
+                    />
                     <div className="list">
-                        {tasks.map(task => (
+                        {tasks.filter(filterMap[currentFilter]).map(task => (
                             <TodoItem
                                 key={task.id}
                                 task={task}

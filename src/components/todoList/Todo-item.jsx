@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Todo.css';
+import classNames from 'classnames';
 
 const TodoItem = ({ task, deleteTask, toggleComplete, updateTask }) => {
 
@@ -21,7 +22,7 @@ const TodoItem = ({ task, deleteTask, toggleComplete, updateTask }) => {
                 defaultChecked={task.completed}
                 onChange={() => toggleComplete(task.id)}
             />
-            <span className={task.completed ? "completed" : ""} onClick={()=>setIsEditing(true)}>{task.title}</span>
+            <span className={classNames('task-title', {'completed': task.completed})} onClick={()=>setIsEditing(true)}>{task.title}</span>
         </div>
         <button onClick={() => deleteTask(task.id)}>Delete</button>
     </>

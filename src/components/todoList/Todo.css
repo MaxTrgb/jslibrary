@@ -2,7 +2,6 @@
 
 .todo {
     align-items: center;
-    height: 500px;
     width: 1000px;
     margin: 0 auto;
     background-color: burlywood;
@@ -100,7 +99,7 @@
     border-style: none;
     background-color: antiquewhite;
     box-shadow: 3px 5px 2px gray;
-    font-weight: 700;
+    font-weight: 800;
     font-size: large;
     font-family: 'Dosis';
 }
@@ -132,7 +131,7 @@
     border-style: hidden;
     font-family: 'Dosis';
     background-color: bisque;
-
+    font-weight: 700;
 }
 
 .filter button:hover {
@@ -145,4 +144,7 @@
 }
 .completed{
     text-decoration: line-through;
+}
+.filter .current {
+    background-color: burlywood;
 }
