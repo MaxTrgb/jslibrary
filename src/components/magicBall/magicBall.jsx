@@ -22,7 +22,7 @@ function MagicBall() {
         setTimeout(() => {
             setIsShaking(false);
             setIsVisible(true);
-        }, 1000);
+        }, 500);
 
     };
 
