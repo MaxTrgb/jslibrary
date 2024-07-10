@@ -14,8 +14,10 @@
     background-image: -webkit-radial-gradient(circle closest-side, #12356d, #000);
     background-image: radial-gradient(circle closest-side, #12356d, #000);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 .switchLanguage-item {
@@ -36,9 +38,6 @@
 }
 
 .switchLanguage {
-    position: absolute;
-    top: 8%;
-    left: 48,5%;
     text-align: center;
     box-shadow: 0 0 10px 2px #194795;
     background-color: black;
@@ -63,6 +62,7 @@
     justify-content: center;
     border-radius: 50%;
     box-shadow: 1px 1px 100px 1px white;
+    margin-top: 100px;
 }
 .shakeBallButton {
     width: 330px;
