@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Product.css';
 import ProductFormItem from './Product-form-item';
+import gridIcon from './assets/apps-grid-icon.png'
+import listIcon from './assets/images.png'
 
 const ProductAdd = ({ addProduct }) => {
     const [showForm, setShowForm] = useState(false);
@@ -10,7 +12,7 @@ const ProductAdd = ({ addProduct }) => {
     const [items, setItems] = useState('');
     const [details, setDetails] = useState('');
 
-    const addProductHandler = (event) => {      
+    const addProductHandler = (event) => {
         event.preventDefault();
         addProduct(title, imgSrc, price, details, items);
         setTitle('');
@@ -18,9 +20,9 @@ const ProductAdd = ({ addProduct }) => {
         setImgSrc('');
         setItems('');
         setDetails('');
-        setShowForm(false);    
+        setShowForm(false);
     };
-    
+
     const toggleForm = () => {
         setShowForm((prevShowForm) => !prevShowForm);
     };
@@ -43,7 +45,21 @@ const ProductAdd = ({ addProduct }) => {
                         </button>
                     </div>
                 </form>
-            )}            
+            )}
+            <div className='filterAndView'>
+                <div>
+                    <button>Filter</button>
+                </div>
+                <div className='viewButtons'>
+                    <button className='gridView'>
+                        <img src={gridIcon} alt="" />
+                    </button>
+
+                    <button className='listView'>
+                        <img src={listIcon} alt="" />
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

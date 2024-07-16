@@ -12,17 +12,18 @@ const ProductsItem = ({ imgSrc, title, price, details, items }) => {
     const handleMouseLeave = () => {
         setHovered(false);
     };
-    
+
     return (
-        <div className={`item ${hovered ? 'hovered' : ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className="item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <img src={imgSrc} alt="" />
             <h3>{title}</h3>
             <p id='price'>{price}</p>
             <p id='check'><CheckAvailable items={items} /></p>
-            {hovered && <p className='productDetails'>{details}</p>}
+            <div className={`productDetails ${hovered ? 'hovered' : ''}`}>
+                {details}
+            </div>
         </div>
     );
 }
-
 
 export default ProductsItem;
