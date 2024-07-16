@@ -3,7 +3,7 @@ import CheckAvailable from './Check-available';
 import './Product.css';
 
 const ProductsItem = ({ imgSrc, title, price, details, items }) => {
-    const [hovered, setHovered] = useState(false);
+    const [hovered, setHovered] = useState(false);    
 
     const handleMouseEnter = () => {
         setHovered(true);

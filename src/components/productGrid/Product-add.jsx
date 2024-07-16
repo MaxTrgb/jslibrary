@@ -4,7 +4,7 @@ import ProductFormItem from './Product-form-item';
 import gridIcon from './assets/apps-grid-icon.png'
 import listIcon from './assets/images.png'
 
-const ProductAdd = ({ addProduct }) => {
+const ProductAdd = ({ addProduct, handleViewChange, isGridView }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -51,12 +51,12 @@ const ProductAdd = ({ addProduct }) => {
                     <button>Filter</button>
                 </div>
                 <div className='viewButtons'>
-                    <button className='gridView'>
-                        <img src={gridIcon} alt="" />
+                    <button className='gridView' onClick={()=> handleViewChange(true)}>
+                        <img src={gridIcon} alt="Grid View" />
                     </button>
 
-                    <button className='listView'>
-                        <img src={listIcon} alt="" />
+                    <button className='listView' onClick={()=> handleViewChange(false)}>
+                        <img src={listIcon} alt="List View" />
                     </button>
                 </div>
             </div>

@@ -183,3 +183,15 @@
     height: 25px;
     width: 25px;
 }
+.listContainer .item {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start; 
+    height: auto; 
+}
+
+.listContainer .item img {
+    width: 100px; 
+    height: 100px;
+    margin: 10px;
+}

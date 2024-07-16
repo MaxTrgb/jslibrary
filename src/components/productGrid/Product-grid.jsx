@@ -6,7 +6,11 @@ import ProductAdd from './Product-add';
 
 const ProductGrid = () => {
     const [products, setProducts] = useState([]);
+    const [isGridView, setIsGridView] = useState(false);
 
+    const handleViewChange = ()=>{
+        setIsGridView(!isGridView);
+    }
     useEffect(()=> {
         const storedProducts = localStorage.getItem('products');
         if (storedProducts) {
@@ -34,8 +38,8 @@ const ProductGrid = () => {
 
     return (
         <div className="product">
-            <ProductAdd addProduct={addProduct} />
-            <div className='gridContainer'>
+            <ProductAdd addProduct={addProduct} handleViewChange = {handleViewChange} isGridView = {isGridView}/>
+            <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 <div className="gridItems">
                     {products.map(product => (
                         <ProductsItem
