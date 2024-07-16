@@ -6,9 +6,9 @@ import ProductAdd from './Product-add';
 
 const ProductGrid = () => {
     const [products, setProducts] = useState([]);
-    const [isGridView, setIsGridView] = useState(false);
+    const [isGridView, setIsGridView] = useState(true);
 
-    const handleViewChange = ()=>{
+    const toggleView = ()=>{
         setIsGridView(!isGridView);
     }
     useEffect(()=> {
@@ -38,22 +38,21 @@ const ProductGrid = () => {
 
     return (
         <div className="product">
-            <ProductAdd addProduct={addProduct} handleViewChange = {handleViewChange} isGridView = {isGridView}/>
-            <div className={isGridView ? 'gridContainer' : 'listContainer'}>
-                <div className="gridItems">
-                    {products.map(product => (
-                        <ProductsItem
-                            key={product.id}
-                            imgSrc={product.imgSrc}
-                            title={product.title}
-                            price={product.price}
-                            items={product.items}
-                            details={product.details}
-                        />
-                    ))}
-                </div>
-            </div>
+        <ProductAdd addProduct={addProduct} toggleView={toggleView} isGridView={isGridView} />
+        <div className={isGridView ? 'gridContainer' : 'listContainer'}>
+            {products.map(product => (
+                <ProductsItem
+                    key={product.id}
+                    imgSrc={product.imgSrc}
+                    title={product.title}
+                    price={product.price}
+                    items={product.items}
+                    details={product.details}
+                    isGridView={isGridView} 
+                />
+            ))}
         </div>
+    </div>
     );
 }
 

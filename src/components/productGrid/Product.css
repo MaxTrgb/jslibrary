@@ -1,6 +1,14 @@
-.gridItems {
+
+.gridContainer {
     display: grid;
     grid-template-columns: repeat(6, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-top: 20px;
 }
