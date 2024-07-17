@@ -1,0 +1,26 @@
+header {
+    width: 100%;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+header nav{
+    display: flex;
+    gap: 100px;
+}
+
+header a {
+    text-decoration: none;
+    color: grey;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+}
+header nav a.active {
+    color: black;
+}
+header a:hover {
+    color: black;
+}

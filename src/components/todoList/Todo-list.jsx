@@ -8,7 +8,7 @@ import { taskList } from "./taskList";
 
 
 const TodoList = () => {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(taskList);
     const [currentFilter, setCurrentFilter] = useState('All');
     
     useEffect(()=>{

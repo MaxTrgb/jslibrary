@@ -5,28 +5,47 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-header{
-  width: 100%;
-  background-color: gainsboro;
+
+
+.homeContentConatainer {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
+  height: auto;
 }
-header a{
-  text-decoration: none;
-  color: grey;
-  padding: 10px;
+
+.homeContentConatainer h2 {
+  margin-top: 20px;
   font-size: 30px;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px black;
-}
-header a:hover{
   color: black;
+  text-shadow: 1px 1px 1px grey;
+  
+}
+
+.homeContentConatainer p { 
+  margin-top: 20px;
+  font-size: 25px;
+  color: black;
+  text-shadow: 1px 1px 1px grey;
+}
+
+
+.homeContentConatainer ul {
+  margin-top: 20px;
+  font-size: 20px;
+  color: black;
+  text-shadow: 1px 1px 1px grey;
+  font-size: xx-large;
+}
+
+.homeContentConatainer ul li a {  
+  text-decoration: none;
 }

@@ -26,7 +26,7 @@ const ProductGrid = () => {
         if (products.length > 0) {
             sortProducts(sortCriteria);
         }
-    }, [sortCriteria, products]);
+    }, [sortCriteria]);
 
     const addProduct = (title, imgSrc, price, details, items) => {
         const newProduct = {
