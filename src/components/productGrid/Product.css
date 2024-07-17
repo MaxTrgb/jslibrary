@@ -1,9 +1,61 @@
-
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(6, minmax(200px, 1fr));
     gap: 10px;
     margin-top: 20px;
+}
+.item{
+    text-decoration: none;
+}
+.gridContainer .item img {
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+.gridContainer .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, outline 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+    height: 450px;
+}
+
+.gridContainer .hovered {
+    height: 100%;
+}
+
+.gridContainer .item:hover .productDetails {
+    visibility: visible;
+    border-bottom: 1px solid lightgray;
+    outline-offset: -2px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: 1s;
+}
+
+.gridContainer .item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    outline-offset: -2px;
+}
+
+.productDetails {
+    visibility: hidden;
+    margin: 10px;
+    background-color: #fff;
+    width: 100%;
+    height: 100px;
+    z-index: 1;
+}
+
+.productDetails p {
+    margin: 10px;
+
 }
 
 .listContainer {
@@ -11,34 +63,36 @@
     grid-template-columns: 100px 2fr 1fr 1fr 1fr 1fr;
     margin-top: 20px;
     gap: 10px;
-    
+
 }
+
 .listContainer .item {
     display: contents;
-    
+
 }
-/* .listContainer .item:hover{
-    box-shadow: 10px 10px 5px gray;
-}  */
+
 .listContainer .item img {
     grid-column: 1;
     width: 100px;
     height: 100px;
     margin: 10px;
 }
-.listContainer .item #title{
+
+.listContainer .item #title {
     grid-column: 2;
     width: 100px;
     height: 100px;
     margin: 10px;
 }
-.listContainer .item #price{
+
+.listContainer .item #price {
     grid-column: 3;
     width: 100px;
     height: 100px;
     margin: 10px;
 }
-.listContainer .item #check{
+
+.listContainer .item #check {
     grid-column: 4;
     width: 100px;
     height: 100px;
@@ -53,25 +107,7 @@
     visibility: visible;
     border: none;
 }
-.item img {
-    object-fit: contain;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-}
 
-.item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    transition: box-shadow 0.3s ease, outline 0.3s ease;
-    box-sizing: border-box;
-    width: 100%;
-    height: 450px;
-    
-}
 
 .myHeader {
     background-color: gainsboro;
@@ -85,19 +121,6 @@
     margin: 10px;
 }
 
-.hovered {
-    height: 100%;
-}
-
-.item:hover .productDetails {
-    visibility: visible;
-}
-
-.item:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    outline-offset: -2px;
-    border-right-style: outset;
-}
 
 .item h3 {
     display: flex;
@@ -188,27 +211,6 @@
     border-color: lightblue;
     box-shadow: 3px 5px 2px gray;
 }
-
-.productDetails {
-    visibility: hidden;
-    margin: 10px;
-    background-color: white;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    padding: 10px;
-    margin-top: 10px;
-    z-index: 1;
-    width: 100.5%;
-    height: 100%;
-    border-bottom-style: outset;
-    border-left-style: outset;
-    border-right-style: outset;
-}
-
-.productDetails:hover {}
 
 .line-1 {
     height: 1px;

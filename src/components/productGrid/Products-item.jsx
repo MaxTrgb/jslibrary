@@ -14,15 +14,16 @@ const ProductsItem = ({ imgSrc, title, price, details, items }) => {
     };
 
     return (
-        <div className="item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <a href='#' className="item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <img src={imgSrc} alt="" />
             <h3>{title}</h3>
             <p id='price'>{price}</p>
             <p id='check'><CheckAvailable items={items} /></p>
             <div className={`productDetails ${hovered ? 'hovered' : ''}`}>
-                {details}
+                <p>{details}</p>
+                
             </div>
-        </div>
+        </a>
     );
 }
 
