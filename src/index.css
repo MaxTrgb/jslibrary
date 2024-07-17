@@ -21,8 +21,12 @@ header{
 }
 header a{
   text-decoration: none;
-  color: black;
+  color: grey;
   padding: 10px;
   font-size: 30px;
   font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+header a:hover{
+  color: black;
 }
