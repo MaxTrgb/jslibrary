@@ -7,6 +7,11 @@
 .item{
     text-decoration: none;
 }
+.gridView, .listView{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .gridContainer .item img {
     object-fit: contain;
     width: 200px;
@@ -219,17 +224,20 @@
 
 }
 
-.filterAndView {
+.sortAndView {
     display: flex;
 }
-
-.myHeader .filterAndView .viewButtons button {
+.viewButtons{
+    display: flex;
+    flex-direction: row;
+}
+.myHeader .sortAndView .viewButtons button {
     height: 50px;
     width: 50px;
 
 }
 
-.myHeader .filterAndView .viewButtons button img {
+.myHeader .sortAndView .viewButtons button img {
     height: 25px;
     width: 25px;
 }

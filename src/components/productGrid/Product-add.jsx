@@ -46,7 +46,7 @@ const ProductAdd = ({ addProduct, toggleView, isGridView }) => {
                     </div>
                 </form>
             )}
-            <div className='filterAndView'>
+            <div className='sortAndView'>
                 <div>
                     <button>Filter</button>
                 </div>
