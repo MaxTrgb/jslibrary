@@ -1,22 +1,24 @@
-import {React, memo, useMemo} from 'react';
+import { React, memo, useMemo } from 'react';
 
 let render = 0;
 
-const IsFive = ({value}) => {
+const IsFive = ({ value }) => {
     console.log(`IsFive render: ${++render}`);
 
-    const  getResult =()=>{
-        let i =0;
+    const getResult = () => {
+        let i = 0;
 
-        while(i<1000000000){
+        while (i < 1000000000) {
             i++;
         }
         return value === 5 ? "Five" : "Not five";
     }
 
-    const result = useMemo(getResult,[]);
+    const result = useMemo(getResult, []);
 
     return <div>{result}</div>;
 }
 
-export default memo(IsFive);
+export default memo(IsFive, (prevProps, nextProps) => {
+    return nextProps.value !== 5 && prevProps.value !== 5;
+});
