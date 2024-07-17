@@ -4,7 +4,7 @@ import ProductFormItem from './Product-form-item';
 import gridIcon from './assets/apps-grid-icon.png'
 import listIcon from './assets/images.png'
 
-const ProductAdd = ({ addProduct, toggleView, isGridView }) => {
+const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -47,8 +47,9 @@ const ProductAdd = ({ addProduct, toggleView, isGridView }) => {
                 </form>
             )}
             <div className='sortAndView'>
-                <div>
-                    <button>Filter</button>
+                <div className='sortMenu'>
+                    <button onClick={()=>setSortCriteria('name')}>Sort By Name</button>
+                    <button onClick={()=>setSortCriteria('price')}>Sort By Price</button>
                 </div>
                 <div className='viewButtons'>
                     <button className='gridView' onClick={()=> toggleView(true)}>

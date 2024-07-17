@@ -235,3 +235,13 @@
     height: 25px;
     width: 25px;
 }
+.sortMenu {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.myHeader .sortAndView .sortMenu button {
+    height: 50px;
+    width: 150px;
+}
