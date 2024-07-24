@@ -1,84 +1,55 @@
-import React, { useState, useEffect }  from "react";
-
-import "./Todo.css";
+import React, { useState, useReducer, useEffect } from "react";
+import { taskList } from "./taskList";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
 import TodoItem from "./Todo-item";
-import { taskList } from "./taskList";
+import todoReducer from "../../reducers/todoReducer";
+import TodoLogo from "./Todo-logo";
+import "./Todo.css";
 
 
 const TodoList = () => {
-    const [tasks, setTasks] = useState(taskList);
+    const [tasks, dispatch] = useReducer(todoReducer, taskList);
     const [currentFilter, setCurrentFilter] = useState('All');
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         const storedTasks = localStorage.getItem('tasks');
         if (storedTasks) {
-            setTasks(storedTasks ? JSON.parse(storedTasks) : taskList);
+            dispatch({ type: 'SET_TASKS', payload: JSON.parse(storedTasks) });
         }
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]);
 
     const addTask = (title) => {
-        setTasks([...tasks,
-        {
-            id: tasks.length + 1,
-            title: title,
-            completed: false
-        }]);
+        dispatch({ type: 'ADD_TASK', payload: { title: title } });
     };
     const deleteTask = (id) => {
-        const newTasks = tasks.filter(task => task.id !== id);
-        setTasks(newTasks);
+        dispatch({ type: 'DELETE_TASK', payload: { id: id } });
     };
     const toggleComplete = (id) => {
-        const newTasks = tasks.map(task => {
-            if (task.id === id) {
-                return {
-                    ...task,
-                    completed: !task.completed
-                }
-
-            }
-            return task;
-        });
-
-        setTasks(newTasks);
+        dispatch({ type: 'TOGGLE_COMPLETE', payload: { id: id } });
     }
-    const updateTask = (id, newTitle) =>{
-        const newTasks = tasks.map(task =>{
-            if(task.id === id){
-                return{
-                    ...task,
-                    title: newTitle
-                }
-            }
-            return task;
-        })
-
-        setTasks(newTasks);
+    const updateTask = (id, newTitle) => {
+        dispatch({ type: 'UPDATE_TASK', payload: { id: id, newTitle: newTitle } });
     }
-    const filterMap ={
-        All: ()=>true,
+    const filterMap = {
+        All: () => true,
         Todo: task => !task.completed,
         Done: task => task.completed
     }
     return (
         <div className="todoContainer">
             <div className="todo">
-                <div className="logo">
-                    <img src="https://cdn-icons-png.freepik.com/256/8476/8476658.png?semt=ais_hybrid" alt="" />
-                    <h1>Todo List</h1>
-                </div>
+                <TodoLogo />
                 <TodoCreate addTask={addTask} />
                 <div>
-                    <TodoFilter 
-                    setCurrentFilter={setCurrentFilter} 
-                    currentFilter={currentFilter} 
-                    filterMap={filterMap}
+                    <TodoFilter
+                        setCurrentFilter={setCurrentFilter}
+                        currentFilter={currentFilter}
+                        filterMap={filterMap}
                     />
                     <div className="list">
                         {tasks.filter(filterMap[currentFilter]).map(task => (
