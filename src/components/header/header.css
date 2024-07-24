@@ -2,8 +2,9 @@ header {
     width: 100%;
     background-color: gainsboro;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    padding: 1em;
 }
 header nav{
     display: flex;
@@ -23,4 +24,27 @@ header nav a.active {
 }
 header a:hover {
     color: black;
+}
+header.theme-dark {
+    background-color: black;
+}
+header.theme-dark nav a{
+    color: white;
+}
+header.theme-dark a{
+    text-shadow: 1px 1px 1px lightgrey;
+}
+
+header.theme-dark a:hover {
+    color: rgb(105, 105, 105);
+}
+header.theme-dark a.active {
+    color: rgb(105, 105, 105);
+}
+header button{
+    margin-left: 50px;
+}
+header.theme-light button{
+    background-color: black;
+    color: white;
 }
