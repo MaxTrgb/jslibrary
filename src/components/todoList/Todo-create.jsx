@@ -17,15 +17,18 @@ const TodoCreate = ({ addTask }) => {
 
     return (
         <div className="addFieldButton">
-            <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter') addTaskHandler();
-                }}
-            />
-            <button onClick={addTaskHandler}>Add</button>
+            <div className="addFieldContainer">
+                <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') addTaskHandler();
+                    }}
+                />
+                <button onClick={addTaskHandler}>Add</button>
+            </div>
+
             {titleError && <div className="error">{titleError}</div>}
         </div>
     );

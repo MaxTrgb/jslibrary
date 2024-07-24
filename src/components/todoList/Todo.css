@@ -86,15 +86,12 @@
 
 .addFieldButton {
     display: flex;
-    justify-content: space-between;
-    width: auto;
-    padding: 0 20px 20px 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    flex-direction: column;
+    align-items: center;
 }
 
-.addFieldButton button {
-    width: 8%;
+.addFieldContainer button {
+    margin: 10px;
     border-radius: 5px;
     border-style: none;
     background-color: antiquewhite;
@@ -102,6 +99,8 @@
     font-weight: 800;
     font-size: large;
     font-family: 'Dosis';
+    width: 50px;
+    height: 50px;
 }
 
 .addFieldButton button:hover {
@@ -109,8 +108,15 @@
     cursor: pointer;
 }
 
+.addFieldContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
 .addFieldButton input {
-    width: 90%;
+    width: 800px;
     height: 50px;
     border-radius: 10px;
     border-style: none;
@@ -149,4 +155,10 @@
 
 .filter .current {
     background-color: burlywood;
+}
+
+.error {
+    width: 50%;
+    background-color: lightcoral;
+    border-radius: 10px;
 }
