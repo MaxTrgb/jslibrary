@@ -142,9 +142,11 @@
 .todoContainer {
     margin-top: 50px;
 }
-.completed{
+
+.completed {
     text-decoration: line-through;
 }
+
 .filter .current {
     background-color: burlywood;
 }

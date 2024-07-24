@@ -1,45 +1,45 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useReducer, useEffect, useCallback, useMemo } from "react";
 import { taskList } from "./taskList";
+import { actionTypes } from "../../reducers/todoReducer";
+import todoReducer from "../../reducers/todoReducer";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
 import TodoItem from "./Todo-item";
-import todoReducer from "../../reducers/todoReducer";
 import TodoLogo from "./Todo-logo";
 import "./Todo.css";
 
 
-const TodoList = () => {
-    const [tasks, dispatch] = useReducer(todoReducer, taskList);
-    const [currentFilter, setCurrentFilter] = useState('All');
+const initializeTasks = () => {
+    const storedTasks = localStorage.getItem('tasks');
+    return storedTasks ? JSON.parse(storedTasks) : taskList;
+}
 
-    useEffect(() => {
-        const storedTasks = localStorage.getItem('tasks');
-        if (storedTasks) {
-            dispatch({ type: 'SET_TASKS', payload: JSON.parse(storedTasks) });
-        }
-    }, []);
+const TodoList = () => {
+    const [tasks, dispatch] = useReducer(todoReducer, [], initializeTasks);
+    const [currentFilter, setCurrentFilter] = useState('All');
 
     useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]);
 
-    const addTask = (title) => {
-        dispatch({ type: 'ADD_TASK', payload: { title: title } });
-    };
-    const deleteTask = (id) => {
-        dispatch({ type: 'DELETE_TASK', payload: { id: id } });
-    };
-    const toggleComplete = (id) => {
-        dispatch({ type: 'TOGGLE_COMPLETE', payload: { id: id } });
-    }
-    const updateTask = (id, newTitle) => {
-        dispatch({ type: 'UPDATE_TASK', payload: { id: id, newTitle: newTitle } });
-    }
-    const filterMap = {
+    const addTask = useCallback((title) => {
+        dispatch({ type: actionTypes.ADD_TASK, payload: { title } });
+    }, []);
+    const deleteTask = useCallback((id) => {
+        dispatch({ type: actionTypes.DELETE_TASK, payload: { id } });
+    }, []);
+    const toggleComplete = useCallback((id) => {
+        dispatch({ type: actionTypes.TOGGLE_COMPLETE, payload: { id } });
+    }, []);
+
+    const updateTask = useCallback((id, newTitle) => {
+        dispatch({ type: actionTypes.UPDATE_TASK, payload: { id, newTitle } });
+    }, []);
+    const filterMap = useMemo(() => ({
         All: () => true,
         Todo: task => !task.completed,
-        Done: task => task.completed
-    }
+        Done: task => task.completed,
+    }), []);
     return (
         <div className="todoContainer">
             <div className="todo">
@@ -63,10 +63,8 @@ const TodoList = () => {
                         ))}
                     </div>
                 </div>
-
             </div>
         </div>
-
     )
 }
 

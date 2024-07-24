@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './Todo.css';
 import classNames from 'classnames';
 
@@ -6,13 +6,13 @@ const TodoItem = ({ task, deleteTask, toggleComplete, updateTask }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(task.title);
 
-    const saveClickHandler = () => {
+    const saveClickHandler = useCallback(() => {
         if (title.trim().length < 3) {
             return;
         }
         setIsEditing(false);
         updateTask(task.id, title);
-    };
+    }, [title, updateTask, task.id]);
 
     const normalTemplate = (
         <>
