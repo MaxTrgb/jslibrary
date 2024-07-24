@@ -27,10 +27,6 @@ const router = createBrowserRouter([
       {
         path: "/magicball",
         element: <MagicBall />
-      },
-      {
-        path: "counters",
-        element: <Counters />
       }
     ]
   }

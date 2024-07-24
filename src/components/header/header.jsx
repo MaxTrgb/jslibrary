@@ -4,7 +4,7 @@ import './header.css';
 import { ThemeContext } from '../../contexts/themeContexst';
 import { Button } from 'antd';
 import { SunOutlined, MoonOutlined } from '@ant-design/icons';
-
+import {Auth} from '../auth/Auth';
 
 const Header = () => {
     const location = useLocation();
@@ -22,10 +22,11 @@ const Header = () => {
 
             <Button
                 type="default"
-                shape='circle'                
+                shape='circle'
                 icon={theme === "dark" ? <SunOutlined /> : <MoonOutlined />}
                 onClick={toggleTheme}
             />
+            <Auth />
         </header>
     );
 }
