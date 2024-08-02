@@ -8,7 +8,7 @@
 .gridContainer .item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     text-decoration: none;
     border: 1px solid lightgray;
     border-radius: 10px;
@@ -25,10 +25,13 @@
     margin: 10px;
 }
 
-.gridContainer .hovered {
-    height: 100%;
+.gridContainer .propertiesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
 }
-
 .gridContainer .item:hover .productDetails {
     visibility: visible;
     transition: 1s;
@@ -42,9 +45,8 @@
 }
 
 .gridContainer .likeButton {
-    margin: 20px;
-    border-style: none;
-    margin-right: -260px;
+    margin: 10px;
+    border-style: none;   
 }
 
 .productDetails {
@@ -52,29 +54,32 @@
     padding-left: 10px;
     padding-right: 10px;
 }
-
-
 .listContainer .item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
     border: 1px solid lightgray;
     border-radius: 10px;
     transition: box-shadow 1s ease, outline 1s ease;
     box-sizing: border-box;
-    width: 100%;
-    height: 150px;
+    width: 100%;    
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 10px;    
+}
+.listContainer #price{
+    width: 5%;
+}
+.listContainer .propertiesContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    justify-content: space-between;
     gap: 50px;
 }
 
 .listContainer .likeButton {
-
-    margin: 20px;
+    margin: 10px;
     border-style: none;
 }
 
@@ -86,10 +91,7 @@
     object-fit: contain;
 }
 
-.listContainer .item .productDetails {
-    grid-column: 5;
-    width: 1000px;
-    height: 100px;
+.listContainer .item .productDetails {  
     margin: 10px;
     visibility: visible;
     border: none;
@@ -108,29 +110,18 @@
     flex-direction: row;
     justify-content: space-between;
 }
-
-.myHeader button {
-    margin: 10px;
-}
-
-
-.item h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 50px;
-}
-
-.item p:first-of-type {
-    font-size: larger;
+.item p:first-of-type {    
     color: brown;
 }
 
 .item p:last-of-type {
     color: grey;
 }
+
+.myHeader button {
+    margin: 10px;
+}
+
 
 .addProductForm {
     display: flex;

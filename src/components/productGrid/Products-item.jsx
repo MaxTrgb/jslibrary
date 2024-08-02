@@ -16,23 +16,28 @@ const ProductsItem = ({ imgSrc, title, price, details, items }) => {
         setHovered(false);
     };
 
-    const setLiked = () =>{
+    const setLiked = () => {
         isLiked(!liked);
     };
-  
+
 
     return (
         <div className="item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Button
-                className='likeButton'
-                icon={liked ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined />}
-                onClick={setLiked}
-            />
-            <img src={imgSrc} alt="" />
-            <h3>{title}</h3>
-            <p id='price'>{price} $</p>
-            <p id='check'><CheckAvailable items={items} /></p>
-            <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
+            <div className='likeButtonContainer'>
+                <Button
+                    className='likeButton'
+                    icon={liked ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined />}
+                    onClick={setLiked}
+                />
+            </div>
+            <div className='propertiesContainer'>
+                <img src={imgSrc} alt="" />
+                <h3>{title}</h3>
+                <p id='price'>{price} $</p>
+                <p id='check'><CheckAvailable items={items} /></p>
+                <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
+            </div>
+
         </div>
     );
 }
