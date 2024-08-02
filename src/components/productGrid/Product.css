@@ -41,7 +41,6 @@
 
 .productDetails {
     visibility: hidden;
-    background-color: #fff;
     padding: 10px;
 }
 
@@ -232,3 +231,4 @@
     height: 50px;
     width: 150px;
 }
+

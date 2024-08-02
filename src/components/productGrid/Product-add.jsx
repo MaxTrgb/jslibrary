@@ -46,6 +46,9 @@ const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => 
                     </div>
                 </form>
             )}
+            <div className='cartContainer'>
+
+            </div>
             <div className='sortAndView'>
                 <div className='sortMenu'>
                     <button onClick={()=>setSortCriteria('name')}>Sort By Name</button>
