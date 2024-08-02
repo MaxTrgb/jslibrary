@@ -3,7 +3,7 @@ import CheckAvailable from './Check-available';
 import './Product.css';
 
 const ProductsItem = ({ imgSrc, title, price, details, items }) => {
-    const [hovered, setHovered] = useState(false);    
+    const [hovered, setHovered] = useState(false);
 
     const handleMouseEnter = () => {
         setHovered(true);
@@ -19,10 +19,7 @@ const ProductsItem = ({ imgSrc, title, price, details, items }) => {
             <h3>{title}</h3>
             <p id='price'>{price} $</p>
             <p id='check'><CheckAvailable items={items} /></p>
-            <div className={`productDetails ${hovered ? 'hovered' : ''}`}>
-                <p>{details}</p>
-                
-            </div>
+            <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
         </a>
     );
 }

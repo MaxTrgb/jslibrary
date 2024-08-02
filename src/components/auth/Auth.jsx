@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -24,10 +24,11 @@ const Auth = () => {
                 icon={<UserOutlined />} />
 
             <Modal
-                title="Login"
+                title="Basic Modal"
                 open={isModalOpen}
                 onOk={handleOk}
-                onCancel={handleCancel}>
+                onCancel={handleCancel}
+            >
                 <p>Some contents...</p>
                 <p>Some contents...</p>
                 <p>Some contents...</p>
