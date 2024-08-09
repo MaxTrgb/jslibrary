@@ -232,3 +232,7 @@
     height: 50px;
     width: 150px;
 }
+
+.likedButton{
+    width: 50px !important;
+}

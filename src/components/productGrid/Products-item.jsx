@@ -26,7 +26,7 @@ const ProductsItem = ({ imgSrc, title, price, details, items }) => {
             <div className='likeButtonContainer'>
                 <Button
                     className='likeButton'
-                    icon={liked ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined />}
+                    icon={liked ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined style={{ color: 'red' }} />}
                     onClick={setLiked}
                 />
             </div>

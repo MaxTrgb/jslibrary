@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './Product.css';
 import ProductFormItem from './Product-form-item';
-import gridIcon from './assets/apps-grid-icon.png'
-import listIcon from './assets/images.png'
-import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
 import { Badge } from 'antd';
+import LikedItems from './likedItems';
+import { UnorderedListOutlined } from '@ant-design/icons';
+import { AppstoreOutlined } from '@ant-design/icons';
 
 const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => {
     const [showForm, setShowForm] = useState(false);
@@ -32,7 +31,7 @@ const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => 
 
     return (
         <div className='myHeader'>
-            <button onClick={toggleForm}>
+            <button className='addProductButton' onClick={toggleForm}>
                 {showForm ? 'Close' : 'Add product'}
             </button>
             {showForm && (
@@ -53,11 +52,7 @@ const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => 
             <div className='sortAndView'>
                 <div className='cartContainer'>
                     <Badge count={2}>
-                        <Button
-                            shape="round"
-                            icon={<ShoppingCartOutlined />}
-                            size='large'
-                        />
+                        <LikedItems />
                     </Badge>
                 </div>
                 <div className='sortMenu'>
@@ -66,11 +61,11 @@ const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => 
                 </div>
                 <div className='viewButtons'>
                     <button className='gridView' onClick={() => toggleView(true)}>
-                        <img src={gridIcon} alt="Grid View" />
+                        <AppstoreOutlined />
                     </button>
 
                     <button className='listView' onClick={() => toggleView(false)}>
-                        <img src={listIcon} alt="List View" />
+                        <UnorderedListOutlined />
                     </button>
                 </div>
             </div>

@@ -39,6 +39,7 @@ const ProductGrid = () => {
         };
         const updatedProducts = [...products, newProduct];
         setProducts(updatedProducts);
+
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
 
