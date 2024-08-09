@@ -3,6 +3,9 @@ import './Product.css';
 import ProductFormItem from './Product-form-item';
 import gridIcon from './assets/apps-grid-icon.png'
 import listIcon from './assets/images.png'
+import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { Badge } from 'antd';
 
 const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => {
     const [showForm, setShowForm] = useState(false);
@@ -46,20 +49,27 @@ const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => 
                     </div>
                 </form>
             )}
-            <div className='cartContainer'>
 
-            </div>
             <div className='sortAndView'>
+                <div className='cartContainer'>
+                    <Badge count={2}>
+                        <Button
+                            shape="round"
+                            icon={<ShoppingCartOutlined />}
+                            size='large'
+                        />
+                    </Badge>
+                </div>
                 <div className='sortMenu'>
-                    <button onClick={()=>setSortCriteria('name')}>Sort By Name</button>
-                    <button onClick={()=>setSortCriteria('price')}>Sort By Price</button>
+                    <button onClick={() => setSortCriteria('name')}>Sort By Name</button>
+                    <button onClick={() => setSortCriteria('price')}>Sort By Price</button>
                 </div>
                 <div className='viewButtons'>
-                    <button className='gridView' onClick={()=> toggleView(true)}>
+                    <button className='gridView' onClick={() => toggleView(true)}>
                         <img src={gridIcon} alt="Grid View" />
                     </button>
 
-                    <button className='listView' onClick={()=> toggleView(false)}>
+                    <button className='listView' onClick={() => toggleView(false)}>
                         <img src={listIcon} alt="List View" />
                     </button>
                 </div>

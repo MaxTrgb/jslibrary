@@ -14,7 +14,7 @@ const Header = () => {
         <header className={`theme-${theme}`}>
             <nav>
                 {location.pathname !== "/" && <NavLink to="/">Home</NavLink>}
-                <NavLink to="todo">Todo</NavLink>
+                <NavLink to="todo">ToDo List</NavLink>
                 <NavLink to="products">Products</NavLink>
                 <NavLink to="magicball">Magic Ball</NavLink>                
             </nav>
