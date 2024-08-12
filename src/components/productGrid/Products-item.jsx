@@ -5,10 +5,6 @@ import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 import { Button } from 'antd';
 
 const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
-
-    console.log('Product ID:', id);
-
-
     const [hovered, setHovered] = useState(false);
     const [liked, setLiked] = useState(false);
 

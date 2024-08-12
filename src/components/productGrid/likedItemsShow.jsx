@@ -1,13 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
-const LikedItemsShow = () => {
-    const [likedItems, setLikedItems] = useState([]);
-
-    useEffect(() => {
-        const storedLikedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        setLikedItems(storedLikedItems);
-    }, []);
-
+const LikedItemsShow = ({ likedItems }) => {
     return (
         <div>
             {likedItems.length > 0 ? (

@@ -28,6 +28,8 @@ const ProductAdd = ({ addProduct, toggleView, setSortCriteria }) => {
     const toggleForm = () => {
         setShowForm((prevShowForm) => !prevShowForm);
     };
+    const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+    const likedItemsCount = likedItems.length;
 
     return (
         <div className='myHeader'>
@@ -51,7 +53,7 @@ const ProductAdd = ({ addProduct, toggleView, setSortCriteria }) => {
 
             <div className='sortAndView'>
                 <div className='cartContainer'>
-                    <Badge count={2}>
+                    <Badge count={likedItemsCount}>
                         <LikedItems />
                     </Badge>
                 </div>

@@ -23,10 +23,20 @@ const ProductGrid = () => {
     }, []);
 
     useEffect(() => {
+        const sortProducts = (criteria) => {
+            let sortedProducts;
+            if (criteria === 'name') {
+                sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
+            } else if (criteria === 'price') {
+                sortedProducts = [...products].sort((a, b) => a.price - b.price);
+            }
+            setProducts(sortedProducts);
+        };
+    
         if (products.length > 0) {
             sortProducts(sortCriteria);
         }
-    }, [sortCriteria]);
+    }, [sortCriteria, products]);
 
     const addProduct = (title, imgSrc, price, details, items) => {
         const newProduct = {
@@ -43,16 +53,7 @@ const ProductGrid = () => {
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
 
-    const sortProducts = (criteria) => {
-        let sortedProducts;
-        if (criteria === 'name') {
-            sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
-        } else if (criteria === 'price') {
-            sortedProducts = [...products].sort((a, b) => a.price - b.price);
-        }
-        setProducts(sortedProducts);
-    };
-
+    
     return (
         <div className="product">
             <ProductAdd addProduct={addProduct} toggleView={toggleView} isGridView={isGridView} setSortCriteria={setSortCriteria} />
