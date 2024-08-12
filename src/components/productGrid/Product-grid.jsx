@@ -60,6 +60,7 @@ const ProductGrid = () => {
                 {products.map(product => (
                     <ProductsItem
                         key={product.id}
+                        id={product.id}
                         imgSrc={product.imgSrc}
                         title={product.title}
                         price={product.price}

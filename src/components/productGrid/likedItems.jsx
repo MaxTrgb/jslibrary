@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { HeartFilled } from '@ant-design/icons';
 import LikedItemsShow from './likedItemsShow';
@@ -6,14 +6,8 @@ import './Product.css';
 
 const LikedItems = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [likedItems, setLikedItems] = useState([]);
-
-    useEffect(() => {
-        const storedLikedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        setLikedItems(storedLikedItems);
-
-    }, []);
-
+    
+    
     const showModal = () => {
         setIsModalOpen(true);
     };

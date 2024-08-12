@@ -6,7 +6,7 @@ import LikedItems from './likedItems';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { AppstoreOutlined } from '@ant-design/icons';
 
-const ProductAdd = ({ addProduct, toggleView, isGridView, setSortCriteria }) => {
+const ProductAdd = ({ addProduct, toggleView, setSortCriteria }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');

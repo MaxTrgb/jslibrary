@@ -5,28 +5,36 @@ import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 import { Button } from 'antd';
 
 const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
+
+    console.log('Product ID:', id);
+
+
     const [hovered, setHovered] = useState(false);
     const [liked, setLiked] = useState(false);
 
     useEffect(() => {
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        if (likedItems.includes(id)) {
-            setLiked(true);
-        }
+        setLiked(likedItems.includes(id?.toString()));
     }, [id]);
+    
 
     const handleLike = () => {
+        if (!id) return; 
+    
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+        const idStr = id.toString(); 
+    
         let updatedLikedItems;
-        
         if (liked) {
-            updatedLikedItems = likedItems.filter(itemId => itemId !== id);
+            updatedLikedItems = likedItems.filter(itemId => itemId !== idStr);
         } else {
-            updatedLikedItems = [...likedItems, id];
+            updatedLikedItems = [...likedItems, idStr];
         }
         localStorage.setItem('likedItems', JSON.stringify(updatedLikedItems));
         setLiked(!liked);
     };
+    
+    
 
     const handleMouseEnter = () => {
         setHovered(true);

@@ -19,6 +19,7 @@ const LikedItemsShow = () => {
             )}
         </div>
     );
-}
+};
+
 
 export default LikedItemsShow;
