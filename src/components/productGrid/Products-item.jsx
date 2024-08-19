@@ -18,15 +18,27 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
     useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         setCart(cartItems);
-    }, []);
+    }, [id]);
 
     const handleCart = () => {
+        if (!id) return;
+
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         const idStr = id.toString();
-        const updatedCartItems = [...cartItems, idStr];
+
+        let updatedCartItems;
+
+        if(cartItems.includes(idStr)) {
+            updatedCartItems = cartItems.filter(itemId => itemId !== idStr);
+        } else {
+            updatedCartItems = [...cartItems, idStr];
+        }
+
+
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+
         setCart(updatedCartItems);
-    }
+    };
     const handleLike = () => {
         if (!id) return;
 

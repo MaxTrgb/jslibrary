@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ProductsItem from './Products-item';
 import './Product.css';
 
-
 const CartItem = () => {
     const [cartItems, setCartItems] = useState([]);
     const [products, setProducts] = useState([]);

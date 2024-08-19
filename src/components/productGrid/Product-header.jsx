@@ -31,10 +31,12 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
     const toggleForm = () => {
         setShowForm((prevShowForm) => !prevShowForm);
     };
+
     const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
     const likedItemsCount = likedItems.length;
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const cartItemsCount = cartItems.length;
+    
     const goToLikedItems = () => {
         navigate('/liked-items');
     };
