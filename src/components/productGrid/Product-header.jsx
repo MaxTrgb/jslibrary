@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { HeartFilled } from '@ant-design/icons';
 
-const ProductAdd = ({ addProduct, toggleView, setSortCriteria }) => {
+const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -58,8 +58,8 @@ const ProductAdd = ({ addProduct, toggleView, setSortCriteria }) => {
 
             <div className='sortAndView'>
                 <div className='cartContainer'>
-                    <Badge count={likedItemsCount}>
-                        <Button onClick={goToLikedItems} shape="circle" icon={<HeartFilled />} />
+                    <Badge count={likedItemsCount}>                        
+                        <Button onClick={goToLikedItems}>Liked Products</Button>
                     </Badge>
                 </div>
                 <div className='sortMenu'>
@@ -80,4 +80,4 @@ const ProductAdd = ({ addProduct, toggleView, setSortCriteria }) => {
     );
 };
 
-export default ProductAdd;
+export default ProductHeader;

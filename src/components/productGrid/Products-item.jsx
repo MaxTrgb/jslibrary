@@ -54,8 +54,8 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
                 <img src={imgSrc} alt="" />
                 <h3>{title}</h3>
                 <p id='price'>{price} $</p>
-                <p id='check'><CheckAvailable items={items} /></p>
-                <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
+                <p id='check'><CheckAvailable items={items} /><button>Add to cart</button></p>
+                <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>                
             </div>
 
         </div>

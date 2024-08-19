@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { productInfo } from './productInfo';
 import ProductsItem from './Products-item';
 import './Product.css';
-import ProductAdd from './Product-add';
+import ProductHeader from './Product-header';
+
+
 
 const ProductGrid = () => {
     const [products, setProducts] = useState([]);
@@ -32,7 +34,7 @@ const ProductGrid = () => {
             }
             setProducts(sortedProducts);
         };
-    
+
         if (products.length > 0) {
             sortProducts(sortCriteria);
         }
@@ -53,10 +55,15 @@ const ProductGrid = () => {
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
 
-    
+
     return (
         <div className="product">
-            <ProductAdd addProduct={addProduct} toggleView={toggleView} isGridView={isGridView} setSortCriteria={setSortCriteria} />
+            <ProductHeader
+                addProduct={addProduct}
+                toggleView={toggleView}
+                isGridView={isGridView}
+                setSortCriteria={setSortCriteria}
+            />
             <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 {products.map(product => (
                     <ProductsItem
