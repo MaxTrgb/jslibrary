@@ -4,6 +4,8 @@ import { UnorderedListOutlined } from '@ant-design/icons';
 import { AppstoreOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
+import { Badge } from 'antd';
+import ProductsCart from './Products-cart';
 
 const LikedProductHeader = ({ toggleView, setSortCriteria }) => {
 
@@ -12,6 +14,8 @@ const LikedProductHeader = ({ toggleView, setSortCriteria }) => {
     const goToProducts = () => {
         navigate('/products');
     };
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartItemsCount = cartItems.length;
 
     return (
         <div className='likedItemsHeader'>
@@ -20,6 +24,11 @@ const LikedProductHeader = ({ toggleView, setSortCriteria }) => {
                     <Button onClick={goToProducts}>Back</Button>
                 </div>
                 <div className='sortAndView'>
+                    <div className='cartContainer'>
+                        <Badge count={cartItemsCount}>
+                            <ProductsCart />
+                        </Badge>
+                    </div>
                     <div className='sortMenu'>
                         <button onClick={() => setSortCriteria('name')}>Sort By Name</button>
                         <button onClick={() => setSortCriteria('price')}>Sort By Price</button>

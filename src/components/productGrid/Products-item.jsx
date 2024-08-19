@@ -7,19 +7,32 @@ import { Button } from 'antd';
 const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
     const [hovered, setHovered] = useState(false);
     const [liked, setLiked] = useState(false);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
         setLiked(likedItems.includes(id?.toString()));
-    }, [id]);
-    
 
+    }, [id]);
+
+    useEffect(() => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        setCart(cartItems);
+    }, []);
+
+    const handleCart = () => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const idStr = id.toString();
+        const updatedCartItems = [...cartItems, idStr];
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        setCart(updatedCartItems);
+    }
     const handleLike = () => {
-        if (!id) return; 
-    
+        if (!id) return;
+
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        const idStr = id.toString(); 
-    
+        const idStr = id.toString();
+
         let updatedLikedItems;
         if (liked) {
             updatedLikedItems = likedItems.filter(itemId => itemId !== idStr);
@@ -29,8 +42,8 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
         localStorage.setItem('likedItems', JSON.stringify(updatedLikedItems));
         setLiked(!liked);
     };
-    
-    
+
+
 
     const handleMouseEnter = () => {
         setHovered(true);
@@ -38,7 +51,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
 
     const handleMouseLeave = () => {
         setHovered(false);
-    };  
+    };
 
 
     return (
@@ -54,8 +67,11 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
                 <img src={imgSrc} alt="" />
                 <h3>{title}</h3>
                 <p id='price'>{price} $</p>
-                <p id='check'><CheckAvailable items={items} /><button>Add to cart</button></p>
-                <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>                
+
+                <p id='check'><CheckAvailable items={items} /></p>
+                <Button className='addToCartButton' onClick={handleCart}>Add to cart</Button>
+
+                <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
             </div>
 
         </div>

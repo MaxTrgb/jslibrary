@@ -20,8 +20,6 @@ const LikedItemsPage = () => {
         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
         setProducts(storedProducts);
 
-        console.log('Liked Items:', storedLikedItems);
-        console.log('Stored Products:', storedProducts);
     }, []);
 
     useEffect(() => {
