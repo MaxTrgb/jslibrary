@@ -7,8 +7,7 @@ const ThemeProvider = ({ children }) => {
         localStorage.setItem('theme', theme);
     }, [theme]);
 
-    const toggleTheme = () => {
-        const current = theme === 'dark' ? 'light' : 'dark';
+    const toggleTheme = () => {        
         setTheme(theme === 'dark' ? 'light' : 'dark');
         document.body.className = `theme-${theme}`;
     };

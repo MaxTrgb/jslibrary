@@ -5,7 +5,7 @@ import Home from '../pages/home/home';
 import TodoList from '../components/todoList/Todo-list';
 import ProductGrid from '../components/productGrid/Product-grid';
 import MagicBall from '../components/magicBall/magicBall';
-
+import LikedItemsPage from '../components/productGrid/LikedItemsPage';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/magicball",
         element: <MagicBall />
+      },
+      {
+        path: '/liked-items',
+        element: <LikedItemsPage />
       }
     ]
   }

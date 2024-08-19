@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CheckAvailable = ({ items }) => {
     let itemsStatus;
     if (items > 10) {
