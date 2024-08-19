@@ -16,7 +16,8 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
     const [items, setItems] = useState('');
     const [details, setDetails] = useState('');
     const navigate = useNavigate();
-
+    
+    
     const addProductHandler = (event) => {
         event.preventDefault();
         addProduct(title, imgSrc, price, details, items);

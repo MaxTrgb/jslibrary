@@ -7,7 +7,7 @@ import { Button } from 'antd';
 const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
     const [hovered, setHovered] = useState(false);
     const [liked, setLiked] = useState(false);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(false);
 
     useEffect(() => {
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
@@ -18,6 +18,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
     useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         setCart(cartItems.includes(id?.toString()));
+
     }, [id]);
 
     const handleCart = () => {
@@ -36,7 +37,6 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
 
 
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-
         setCart(!cart);
     };
     const handleLike = () => {
@@ -46,11 +46,13 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
         const idStr = id.toString();
 
         let updatedLikedItems;
+
         if (liked) {
             updatedLikedItems = likedItems.filter(itemId => itemId !== idStr);
         } else {
             updatedLikedItems = [...likedItems, idStr];
         }
+
         localStorage.setItem('likedItems', JSON.stringify(updatedLikedItems));
         setLiked(!liked);
     };
@@ -79,10 +81,8 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
                 <img src={imgSrc} alt="" />
                 <h3>{title}</h3>
                 <p id='price'>{price} $</p>
-
                 <p id='check'><CheckAvailable items={items} /></p>
                 <Button className='addToCartButton' onClick={handleCart}>Add to cart</Button>
-
                 <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
             </div>
 
