@@ -36,7 +36,7 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
     const likedItemsCount = likedItems.length;
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const cartItemsCount = cartItems.length;
-    
+
     const goToLikedItems = () => {
         navigate('/liked-items');
     };

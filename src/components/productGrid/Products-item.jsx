@@ -17,7 +17,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
 
     useEffect(() => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        setCart(cartItems);
+        setCart(cartItems.includes(id?.toString()));
     }, [id]);
 
     const handleCart = () => {
@@ -28,7 +28,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
 
         let updatedCartItems;
 
-        if(cartItems.includes(idStr)) {
+        if(cart) {
             updatedCartItems = cartItems.filter(itemId => itemId !== idStr);
         } else {
             updatedCartItems = [...cartItems, idStr];
@@ -37,7 +37,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
 
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
 
-        setCart(updatedCartItems);
+        setCart(!cart);
     };
     const handleLike = () => {
         if (!id) return;

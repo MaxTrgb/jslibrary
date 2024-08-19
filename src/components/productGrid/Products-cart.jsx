@@ -3,7 +3,7 @@ import { Button, Modal } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import CartItem from './Cart-item';
 
-const ProductsCart = ({cartItems}) => {
+const ProductsCart = ({ cartItems, products }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     
@@ -32,7 +32,7 @@ const ProductsCart = ({cartItems}) => {
                 onOk={handleOk}
                 onCancel={handleCancel}
             >
-               <CartItem />
+               <CartItem cartItems={cartItems} products={products} />
             </Modal>
         </>
     )

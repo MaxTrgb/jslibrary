@@ -10,6 +10,7 @@ const ProductGrid = () => {
     const [products, setProducts] = useState([]);
     const [isGridView, setIsGridView] = useState(true);
     const [sortCriteria, setSortCriteria] = useState('name');
+    const [cartItems, setCartItems] = useState([]);
 
     const toggleView = () => {
         setIsGridView(!isGridView);
@@ -17,11 +18,16 @@ const ProductGrid = () => {
 
     useEffect(() => {
         const storedProducts = localStorage.getItem('products');
+        const storedCartItems = localStorage.getItem('cartItems');
+
         if (storedProducts) {
             setProducts(JSON.parse(storedProducts));
         } else {
             localStorage.setItem('products', JSON.stringify(productInfo));
             setProducts(productInfo);
+        }
+        if (storedCartItems) {
+            setCartItems(JSON.parse(storedCartItems));
         }
     }, []);
 
@@ -56,7 +62,11 @@ const ProductGrid = () => {
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
 
-
+    const addToCart = (productId) => {
+        const updatedCartItems = [...cartItems, productId];
+        setCartItems(updatedCartItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    };
     return (
         <div className="product">
             <ProductHeader
@@ -64,6 +74,7 @@ const ProductGrid = () => {
                 toggleView={toggleView}
                 isGridView={isGridView}
                 setSortCriteria={setSortCriteria}
+                cartItems={cartItems}
             />
             <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 {products.map(product => (
@@ -76,6 +87,7 @@ const ProductGrid = () => {
                         items={product.items}
                         details={product.details}
                         isGridView={isGridView}
+                        addToCart={() => addToCart(product.id)}
                     />
                 ))}
             </div>
