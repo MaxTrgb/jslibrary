@@ -6,7 +6,6 @@ import { UnorderedListOutlined } from '@ant-design/icons';
 import { AppstoreOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import { HeartFilled } from '@ant-design/icons';
 
 const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
     const [showForm, setShowForm] = useState(false);

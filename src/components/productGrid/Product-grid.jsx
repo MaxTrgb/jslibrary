@@ -20,6 +20,7 @@ const ProductGrid = () => {
         if (storedProducts) {
             setProducts(JSON.parse(storedProducts));
         } else {
+            localStorage.setItem('products', JSON.stringify(productInfo));
             setProducts(productInfo);
         }
     }, []);
