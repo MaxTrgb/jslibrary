@@ -7,7 +7,7 @@ import { AppstoreOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 
-const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount}) => {
+const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -15,8 +15,7 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount}) =
     const [items, setItems] = useState('');
     const [details, setDetails] = useState('');
     const navigate = useNavigate();
-    
-    
+
     const addProductHandler = (event) => {
         event.preventDefault();
         addProduct(title, imgSrc, price, details, items);
@@ -31,8 +30,8 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount}) =
     const toggleForm = () => {
         setShowForm((prevShowForm) => !prevShowForm);
     };
-
-   
+    const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+    const likedItemsCount = likedItems.length;
     const goToLikedItems = () => {
         navigate('/liked-items');
     };
@@ -56,16 +55,12 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount}) =
                 </form>
             )}
 
-            <div className='sortAndView'>                
-                <div className='likedContainer'>
-                    <Badge count={likedCount}>
-                        <Button
-                            onClick={goToLikedItems}
-                            style={{ backgroundColor: 'brown', color: 'white' }}>
-                            <p>Liked Products</p>
-                        </Button>
+            <div className='sortAndView'>
+                <div className='cartContainer'>
+                    <Badge count={likedItemsCount}>                        
+                        <Button onClick={goToLikedItems}>Liked Products</Button>
                     </Badge>
-                </div>                
+                </div>
                 <div className='sortMenu'>
                     <button onClick={() => setSortCriteria('name')}>Sort By Name</button>
                     <button onClick={() => setSortCriteria('price')}>Sort By Price</button>

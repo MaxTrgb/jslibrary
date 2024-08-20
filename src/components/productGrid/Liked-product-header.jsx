@@ -5,7 +5,6 @@ import { AppstoreOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 
-
 const LikedProductHeader = ({ toggleView, setSortCriteria }) => {
 
     const navigate = useNavigate();
@@ -13,14 +12,14 @@ const LikedProductHeader = ({ toggleView, setSortCriteria }) => {
     const goToProducts = () => {
         navigate('/products');
     };
-   
+
     return (
         <div className='likedItemsHeader'>
             <div className='myHeader'>
                 <div className='backButton'>
                     <Button onClick={goToProducts}>Back</Button>
                 </div>
-                <div className='sortAndView'>                    
+                <div className='sortAndView'>
                     <div className='sortMenu'>
                         <button onClick={() => setSortCriteria('name')}>Sort By Name</button>
                         <button onClick={() => setSortCriteria('price')}>Sort By Price</button>
