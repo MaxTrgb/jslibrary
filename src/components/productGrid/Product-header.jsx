@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import ProductsCart from './Products-cart';
 
-const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
+const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount, cartCount }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -33,11 +33,7 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
         setShowForm((prevShowForm) => !prevShowForm);
     };
 
-    const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-    const likedItemsCount = likedItems.length;
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const cartItemsCount = cartItems.length;
-
+   
     const goToLikedItems = () => {
         navigate('/liked-items');
     };
@@ -63,7 +59,7 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
 
             <div className='sortAndView'>                
                 <div className='likedContainer'>
-                    <Badge count={likedItemsCount}>
+                    <Badge count={likedCount}>
                         <Button
                             onClick={goToLikedItems}
                             style={{ backgroundColor: 'brown', color: 'white' }}>
@@ -72,7 +68,7 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria }) => {
                     </Badge>
                 </div>
                 <div className='cartContainer'>
-                    <Badge count={cartItemsCount} >
+                    <Badge count={cartCount} >
                         <ProductsCart />
                     </Badge>
                 </div>

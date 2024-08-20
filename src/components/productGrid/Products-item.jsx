@@ -4,7 +4,7 @@ import './Product.css';
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 import { Button } from 'antd';
 
-const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
+const ProductsItem = ({ id, imgSrc, title, price, details, items, isLiked, isCart }) => {
     const [hovered, setHovered] = useState(false);
  
 
