@@ -8,6 +8,8 @@ const ProductGrid = () => {
     const [products, setProducts] = useState([]);
     const [isGridView, setIsGridView] = useState(true);
     const [sortCriteria, setSortCriteria] = useState('name');
+    const [liked, setLiked] = useState(false);
+    const [cart, setCart] = useState(false);
 
     const toggleView = () => {
         setIsGridView(prevState => !prevState);
@@ -15,6 +17,8 @@ const ProductGrid = () => {
 
     useEffect(() => {
         const storedProducts = localStorage.getItem('products');
+        const storedLikedItems = localStorage.getItem('likedItems');
+        const storedCartItems = localStorage.getItem('cartItems');
 
         if (storedProducts) {
             setProducts(JSON.parse(storedProducts));
@@ -22,6 +26,10 @@ const ProductGrid = () => {
             localStorage.setItem('products', JSON.stringify(productInfo));
             setProducts(productInfo);
         }
+
+        setLiked(storedLikedItems);
+        setCart(storedCartItems);
+
     }, []);
 
     const sortedProducts = useMemo(() => {
@@ -55,6 +63,37 @@ const ProductGrid = () => {
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
 
+    const handleCart = () => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const idStr = 
+
+        let updatedCartItems;
+
+        if(cart) {
+            updatedCartItems = cartItems.filter(itemId => itemId !== idStr);
+        } else {
+            updatedCartItems = [...cartItems, idStr];
+        }
+
+
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        setCart(!cart);
+    };
+    const handleLike = () => {
+        const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+        const idStr = id.toString();
+
+        let updatedLikedItems;
+
+        if (liked) {
+            updatedLikedItems = likedItems.filter(itemId => itemId !== idStr);
+        } else {
+            updatedLikedItems = [...likedItems, idStr];
+        }
+
+        localStorage.setItem('likedItems', JSON.stringify(updatedLikedItems));
+        setLiked(!liked);
+    };
     return (
         <div className="product">
             <ProductHeader
