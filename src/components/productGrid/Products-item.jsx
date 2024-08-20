@@ -1,27 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import CheckAvailable from './Check-available';
 import './Product.css';
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 import { Button } from 'antd';
 
-const ProductsItem = ({ id, imgSrc, title, price, details, items, isLiked, isCart }) => {
+const ProductsItem = ({ id, imgSrc, title, price, details, items, isLiked, isCart, toggleLiked, toggleCart }) => {
     const [hovered, setHovered] = useState(false);
- 
-
-    useEffect(() => {
-        const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        setLiked(likedItems.includes(id?.toString()));
-
-    }, [id]);
-
-    useEffect(() => {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        setCart(cartItems.includes(id?.toString()));
-
-    }, [id]);
-
-
-
 
     const handleMouseEnter = () => {
         setHovered(true);
@@ -35,18 +19,21 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items, isLiked, isCar
     return (
         <div className="item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className='likeButtonContainer'>
-                <Button
-                    className='likeButton'
-                    icon={liked ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined style={{ color: 'red' }} />}
-                    
-                />
+                {isLiked ? 
+                    <HeartFilled className='likeButton' onClick={() => toggleLiked(id)} /> : 
+                    <HeartOutlined className='likeButton' onClick={() => toggleLiked(id)} />}
             </div>
             <div className='propertiesContainer'>
                 <img src={imgSrc} alt="" />
                 <h3>{title}</h3>
                 <p id='price'>{price} $</p>
                 <p id='check'><CheckAvailable items={items} /></p>
-                <Button className='addToCartButton'>Add to cart</Button>
+                <Button 
+                    type="primary" 
+                    id='cartButton' 
+                    onClick={() => toggleCart(id)}>
+                    {isCart ? 'Remove from Cart' : 'Add to Cart'}
+                </Button>
                 <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
             </div>
 

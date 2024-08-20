@@ -10,12 +10,12 @@ const ProductGrid = () => {
     const [sortCriteria, setSortCriteria] = useState('name');
     const [liked, setLiked] = useState(false);
     const [cart, setCart] = useState(false);
-    
-    
+
+
     const toggleView = () => {
         setIsGridView(prevState => !prevState);
     };
-    
+
 
     useEffect(() => {
         const storedProducts = localStorage.getItem('products');
@@ -29,11 +29,27 @@ const ProductGrid = () => {
             setProducts(productInfo);
         }
 
-        setLiked(storedLikedItems);
-        setCart(storedCartItems);
+        setLiked(storedLikedItems ? JSON.parse(storedLikedItems) : []);
+        setCart(storedCartItems ? JSON.parse(storedCartItems) : []);
 
     }, []);
+    const toggleLiked = (productId) => {
+        const updatedLiked = liked.includes(productId)
+            ? liked.filter(id => id !== productId)
+            : [...liked, productId];
+        
+        setLiked(updatedLiked);
+        localStorage.setItem('likedItems', JSON.stringify(updatedLiked));
+    };
 
+    const toggleCart = (productId) => {
+        const updatedCart = cart.includes(productId)
+            ? cart.filter(id => id !== productId)
+            : [...cart, productId];
+        
+        setCart(updatedCart);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+    };
     const sortedProducts = useMemo(() => {
         if (products.length === 0) return products;
 
@@ -46,7 +62,7 @@ const ProductGrid = () => {
         return sorted;
     }, [products, sortCriteria]);
 
-    useEffect(() => {    
+    useEffect(() => {
         localStorage.setItem('products', JSON.stringify(sortedProducts));
     }, [sortedProducts]);
 
@@ -64,14 +80,7 @@ const ProductGrid = () => {
 
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
-
-    
-    const toggleLiked = () => {
-        setLiked(!liked);
-    }
-    const toggleCart = () => {
-        setCart(!cart);
-    } 
+    const cartProducts = products.filter(product => cart.includes(product.id.toString()));
     return (
         <div className="product">
             <ProductHeader
@@ -79,8 +88,9 @@ const ProductGrid = () => {
                 toggleView={toggleView}
                 isGridView={isGridView}
                 setSortCriteria={setSortCriteria}
-                likedCount={liked.length}
-                cartCount={cart.length}
+                likedCount={liked.length || 0}
+                cartCount={cart.length || 0}
+                cartProducts={cartProducts}
             />
             <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 {sortedProducts.map(product => (

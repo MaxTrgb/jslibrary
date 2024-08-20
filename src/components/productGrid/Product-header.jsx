@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import ProductsCart from './Products-cart';
 
-const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount, cartCount }) => {
+const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount, cartCount, cartProducts }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -69,7 +69,7 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount, ca
                 </div>
                 <div className='cartContainer'>
                     <Badge count={cartCount} >
-                        <ProductsCart />
+                        <ProductsCart cartProducts={cartProducts} />
                     </Badge>
                 </div>
                 <div className='sortMenu'>
