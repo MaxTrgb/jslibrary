@@ -6,9 +6,8 @@ import { UnorderedListOutlined } from '@ant-design/icons';
 import { AppstoreOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import ProductsCart from './Products-cart';
 
-const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount, cartCount, cartProducts }) => {
+const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount}) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -66,12 +65,7 @@ const ProductHeader = ({ addProduct, toggleView, setSortCriteria, likedCount, ca
                             <p>Liked Products</p>
                         </Button>
                     </Badge>
-                </div>
-                <div className='cartContainer'>
-                    <Badge count={cartCount} >
-                        <ProductsCart cartProducts={cartProducts} />
-                    </Badge>
-                </div>
+                </div>                
                 <div className='sortMenu'>
                     <button onClick={() => setSortCriteria('name')}>Sort By Name</button>
                     <button onClick={() => setSortCriteria('price')}>Sort By Price</button>

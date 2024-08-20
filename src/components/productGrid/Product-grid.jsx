@@ -9,7 +9,6 @@ const ProductGrid = () => {
     const [isGridView, setIsGridView] = useState(true);
     const [sortCriteria, setSortCriteria] = useState('name');
     const [liked, setLiked] = useState(false);
-    const [cart, setCart] = useState(false);
 
 
     const toggleView = () => {
@@ -19,8 +18,7 @@ const ProductGrid = () => {
 
     useEffect(() => {
         const storedProducts = localStorage.getItem('products');
-        const storedLikedItems = localStorage.getItem('likedItems');
-        const storedCartItems = localStorage.getItem('cartItems');
+        const storedLikedItems = localStorage.getItem('likedItems');     
 
         if (storedProducts) {
             setProducts(JSON.parse(storedProducts));
@@ -30,8 +28,6 @@ const ProductGrid = () => {
         }
 
         setLiked(storedLikedItems ? JSON.parse(storedLikedItems) : []);
-        setCart(storedCartItems ? JSON.parse(storedCartItems) : []);
-
     }, []);
     const toggleLiked = (productId) => {
         const updatedLiked = liked.includes(productId)
@@ -42,14 +38,7 @@ const ProductGrid = () => {
         localStorage.setItem('likedItems', JSON.stringify(updatedLiked));
     };
 
-    const toggleCart = (productId) => {
-        const updatedCart = cart.includes(productId)
-            ? cart.filter(id => id !== productId)
-            : [...cart, productId];
-        
-        setCart(updatedCart);
-        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-    };
+    
     const sortedProducts = useMemo(() => {
         if (products.length === 0) return products;
 
@@ -80,7 +69,7 @@ const ProductGrid = () => {
 
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
-    const cartProducts = products.filter(product => cart.includes(product.id.toString()));
+   
     return (
         <div className="product">
             <ProductHeader
@@ -88,9 +77,7 @@ const ProductGrid = () => {
                 toggleView={toggleView}
                 isGridView={isGridView}
                 setSortCriteria={setSortCriteria}
-                likedCount={liked.length || 0}
-                cartCount={cart.length || 0}
-                cartProducts={cartProducts}
+                likedCount={liked.length || 0}                
             />
             <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 {sortedProducts.map(product => (
@@ -103,9 +90,7 @@ const ProductGrid = () => {
                         items={product.items}
                         details={product.details}
                         isGridView={isGridView}
-                        isLiked={liked.includes(product.id.toString())}
-                        isCart={cart.includes(product.id.toString())}
-                        toggleCart={toggleCart}
+                        isLiked={liked.includes(product.id.toString())}   
                         toggleLiked={toggleLiked}
                     />
                 ))}
