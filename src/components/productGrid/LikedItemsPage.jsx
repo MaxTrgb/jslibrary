@@ -6,7 +6,7 @@ import './Product.css';
 const LikedItemsPage = () => {
     const [likedItems, setLikedItems] = useState([]);
     const [products, setProducts] = useState([]);
-    const [isGridView, setIsGridView] = useState(true);
+    const [isGridView, setIsGridView] = useState(false);
     const [sortCriteria, setSortCriteria] = useState('name');
 
     const toggleView = () => {

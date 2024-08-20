@@ -14,9 +14,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
     }, [id]);
     
 
-    const handleLike = () => {
-        if (!id) return; 
-    
+    const handleLike = () => {        
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
         const idStr = id.toString(); 
     
@@ -28,8 +26,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
         }
         localStorage.setItem('likedItems', JSON.stringify(updatedLikedItems));
         setLiked(!liked);
-    };
-    
+    };    
     
 
     const handleMouseEnter = () => {
