@@ -4,42 +4,40 @@ import ProductsItem from './Products-item';
 import './Product.css';
 import ProductHeader from './Product-header';
 
-
-
 const ProductGrid = () => {
     const [products, setProducts] = useState([]);
     const [isGridView, setIsGridView] = useState(true);
     const [sortCriteria, setSortCriteria] = useState('name');
 
-    const toggleView = () => {
-        setIsGridView(!isGridView);
+    const sortProducts = (criteria, products) => {
+        let sortedProducts;
+        if (criteria === 'name') {
+            sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
+        } else if (criteria === 'price') {
+            sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        }
+        return sortedProducts;
     };
 
     useEffect(() => {
         const storedProducts = localStorage.getItem('products');
-        if (storedProducts) {
-            setProducts(JSON.parse(storedProducts));
-        } else {
+        let initialProducts = storedProducts ? JSON.parse(storedProducts) : productInfo;
+        setProducts(sortProducts(sortCriteria, initialProducts));
+
+        if (!storedProducts) {
             localStorage.setItem('products', JSON.stringify(productInfo));
-            setProducts(productInfo);
         }
-    }, []);
+    }, [sortCriteria]); 
 
     useEffect(() => {
-        const sortProducts = (criteria) => {
-            let sortedProducts;
-            if (criteria === 'name') {
-                sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
-            } else if (criteria === 'price') {
-                sortedProducts = [...products].sort((a, b) => a.price - b.price);
-            }
-            setProducts(sortedProducts);
-        };
+        setProducts((prevProducts) => sortProducts(sortCriteria, prevProducts));
+    }, [sortCriteria]);
 
-        if (products.length > 0) {
-            sortProducts(sortCriteria);
-        }
-    }, [sortCriteria, products]);
+
+    
+    const toggleView = () => {
+        setIsGridView(!isGridView);
+    };
 
     const addProduct = (title, imgSrc, price, details, items) => {
         const newProduct = {
@@ -51,11 +49,10 @@ const ProductGrid = () => {
             items: parseInt(items, 10)
         };
         const updatedProducts = [...products, newProduct];
-        setProducts(updatedProducts);
+        setProducts(sortProducts(sortCriteria, updatedProducts));
 
         localStorage.setItem('products', JSON.stringify(updatedProducts));
     };
-
 
     return (
         <div className="product">

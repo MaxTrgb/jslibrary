@@ -26,6 +26,8 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
         }
         localStorage.setItem('likedItems', JSON.stringify(updatedLikedItems));
         setLiked(!liked);
+
+        window.dispatchEvent(new Event('storage'));
     };    
     
 
