@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import Registration from './Registration';
 
 const Auth = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,9 +30,7 @@ const Auth = () => {
                 onOk={handleOk}
                 onCancel={handleCancel}
             >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+                <Registration />
             </Modal>
         </>
     )
