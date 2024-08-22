@@ -9,36 +9,34 @@ const LikedItemsPage = () => {
     const [isGridView, setIsGridView] = useState(false);
     const [sortCriteria, setSortCriteria] = useState('name');
 
-    const toggleView = () => {
-        setIsGridView(!isGridView);
+    const sortProducts = (criteria, products) => {
+        let sortedProducts;
+        if (criteria === 'name') {
+            sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
+        } else if (criteria === 'price') {
+            sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        }
+        return sortedProducts;
     };
 
     useEffect(() => {
         const storedLikedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        setLikedItems(storedLikedItems);
-
         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-        setProducts(storedProducts);
+
+        setLikedItems(storedLikedItems);
+        setProducts(sortProducts(sortCriteria, storedProducts));
 
         console.log('Liked Items:', storedLikedItems);
         console.log('Stored Products:', storedProducts);
-    }, []);
+    }, [sortCriteria]); 
 
     useEffect(() => {
-        const sortProducts = (criteria) => {
-            let sortedProducts;
-            if (criteria === 'name') {
-                sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
-            } else if (criteria === 'price') {
-                sortedProducts = [...products].sort((a, b) => a.price - b.price);
-            }
-            setProducts(sortedProducts);
-        };
+        setProducts((prevProducts) => sortProducts(sortCriteria, prevProducts));
+    }, [sortCriteria]);
 
-        if (products.length > 0) {
-            sortProducts(sortCriteria);
-        }
-    }, [sortCriteria, products]);
+    const toggleView = () => {
+        setIsGridView(!isGridView);
+    };
 
     const likedProducts = products.filter(product => likedItems.includes(product.id.toString()));
 
