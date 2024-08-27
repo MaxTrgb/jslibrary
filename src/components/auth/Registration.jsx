@@ -18,8 +18,9 @@ const submitHandler = (values, formikBag) => {
     console.log(values);
     formikBag.resetForm();
 }
+
 const RegistrationSchema = Yup.object().shape({
-    name: Yup.string().min(2, "Too short").max(5, "Too long").required("Name is required!!!"),
+    name: Yup.string().min(2, "Too short").max(5, "Too long").required("Name is required!"),
     email: Yup.string().email().required(),
     password: Yup.string().min(4).max(20).required(),
     phones: Yup.array().of(
@@ -28,6 +29,7 @@ const RegistrationSchema = Yup.object().shape({
         })
     )
 })
+
 const Registration = () => {
     return (
         <div className={styles.registrationForm}>
@@ -36,64 +38,99 @@ const Registration = () => {
                 onSubmit={submitHandler}
                 validationSchema={RegistrationSchema}
             >
-                {({ values }) => (<Form>
-                    <div>
-                        <Field
-                            name="name"
-                            type="text"
-                            placeholder="Name" />
-                        <ErrorMessage
-                            name="name"
-                            component="div"
-                            className={styles.invalid} />
-                    </div>
-                    <div>
-                        <Field
-                            name="email"
-                            type="email"
-                            placeholder="Email" />
-                        <ErrorMessage
-                            name="email"
-                            component="div"
-                            className={styles.invalid} />
-                    </div>
-                    <div>
-                        <Field
-                            name="password"
-                            type="password"
-                            placeholder="Password" />
-                        <ErrorMessage
-                            name="password"
-                            component="div"
-                            className={styles.invalid} />
-                    </div>
-                    <div>
-                        <FieldArray name="phones">
-                            {({ push, remove }) =>
-                                values.phones.map((phone, index) => (
-                                    <div key={index}>
-                                        <Field name={`phones.${index}.number`} />
-                                        {index === 0 ?
-                                            <button type="button" onClick={() => push({ number: "+38" })}>
-                                                Add
-                                            </button>
-                                            :
-                                            <button type="button" onClick={() => remove(index)}>
-                                                Remove
-                                            </button>
-                                        }
-                                        <ErrorMessage
-                                            name={`phones.${index}.number`}
-                                            component="div"
-                                            className={styles.invalid}
-                                        />
-                                    </div>
-                                ))}
-                        </FieldArray>
-                    </div>
-                    <Field type="submit" value="Submit" id="submit" />
-                </Form>)
-                }
+                {({ values }) => (
+                    <Form>
+                        <div className={styles.field}>
+                            <Field
+                                name="name"
+                                type="text"
+                                placeholder="Name"
+                                className={styles.input}
+                            />
+                            <ErrorMessage
+                                name="name"
+                                component="div"
+                                className={styles.invalid}
+                            />
+                        </div>
+
+                        <div className={styles.field}>
+                            <Field
+                                name="email"
+                                type="email"
+                                placeholder="Email"
+                                className={styles.input}
+                            />
+                            <ErrorMessage
+                                name="email"
+                                component="div"
+                                className={styles.invalid}
+                            />
+                        </div>
+
+                        <div className={styles.field}>
+                            <Field
+                                name="password"
+                                type="password"
+                                placeholder="Password"
+                                className={styles.input}
+                            />
+                            <ErrorMessage
+                                name="password"
+                                component="div"
+                                className={styles.invalid}
+                            />
+                        </div>
+
+                        <div className={styles.field}>
+                            <FieldArray name="phones">
+                                {({ push, remove }) =>
+                                    values.phones.map((phone, index) => (
+                                        <div key={index} className={styles.phoneField}>
+                                            <Field
+                                                name={`phones.${index}.number`}
+                                                className={styles.input}
+                                            />
+                                            {index === 0 ? (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => push({ number: "+38" })}
+                                                    className={styles.button}
+                                                >
+                                                    Add
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => remove(index)}
+                                                    className={styles.button}
+                                                >
+                                                    Remove
+                                                </button>
+                                            )}
+                                            <ErrorMessage
+                                                name={`phones.${index}.number`}
+                                                component="div"
+                                                className={styles.invalid}
+                                            />
+                                        </div>
+                                    ))
+                                }
+                            </FieldArray>
+                        </div>
+
+                        <div className={styles.buttonGroup}>
+                            <button type="submit" className={styles.button}>
+                                Submit
+                            </button>
+                        </div>
+
+                        <div className={styles.footer}>
+                            <p>Already have an account?</p>
+                            <a href="/login">Login</a>
+                        </div>
+                    </Form>
+                )}
             </Formik>
         </div>
     );
