@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import Registration from './Registration';
-import styles from './Form.module.css';
 
 const Auth = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,15 +22,13 @@ const Auth = () => {
                 type="primary"
                 shape="circle"
                 onClick={showModal}
-                icon={<UserOutlined />}
-            />
+                icon={<UserOutlined />} />
 
             <Modal
-                title="Welcome!"
+                
                 open={isModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
-                className={styles.registrationForm}
             >
                 <Registration />
             </Modal>
