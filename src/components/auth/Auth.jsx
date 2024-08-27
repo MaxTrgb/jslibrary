@@ -24,8 +24,7 @@ const Auth = () => {
                 onClick={showModal}
                 icon={<UserOutlined />} />
 
-            <Modal
-                
+            <Modal                
                 open={isModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}

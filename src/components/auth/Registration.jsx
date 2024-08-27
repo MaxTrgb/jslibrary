@@ -33,6 +33,7 @@ const RegistrationSchema = Yup.object().shape({
 const Registration = () => {
     return (
         <div className={styles.registrationForm}>
+            <h2>Registration</h2>
             <Formik
                 initialValues={initialValues}
                 onSubmit={submitHandler}
