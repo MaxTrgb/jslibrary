@@ -30,7 +30,7 @@ const RegistrationSchema = Yup.object().shape({
     )
 })
 
-const Registration = () => {
+const Registration = ({ toggleForm }) => {
     return (
         <div className={styles.registrationForm}>
             <h2>Registration</h2>
@@ -128,7 +128,9 @@ const Registration = () => {
 
                         <div className={styles.footer}>
                             <p>Already have an account?</p>
-                            <a href="/login">Login</a>
+                            <button type="button" onClick={toggleForm} className={styles.linkButton}>
+                                Login
+                            </button>
                         </div>
                     </Form>
                 )}

@@ -1,4 +1,4 @@
-import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
+import { Formik, Field, Form, ErrorMessage} from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import styles from './Form.module.css';
@@ -6,7 +6,7 @@ import styles from './Form.module.css';
 const initialValues = {
     
     email: '',
-    password: '',
+    password: ''
     
 };
 const LoginSchema = Yup.object().shape({
@@ -19,10 +19,10 @@ const submitHandler = (values, formikBag) => {
     console.log(values);
     formikBag.resetForm();
 }
-const Login = () => {
+const Login = ({ toggleForm }) => {
     return (
         <div className={styles.loginForm}>
-            <h2>Registration</h2>
+            <h2>Login</h2>
             <Formik
                 initialValues={initialValues}
                 onSubmit={submitHandler}
@@ -68,7 +68,9 @@ const Login = () => {
 
                         <div className={styles.footer}>
                             <p>Don't have an account?</p>
-                            <a href="#">Register</a>
+                            <button type="button" onClick={toggleForm} className={styles.linkButton}>
+                                Register
+                            </button>
                         </div>
                     </Form>
                 )}
