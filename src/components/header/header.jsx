@@ -6,6 +6,7 @@ import { Button, Space } from 'antd';
 import { SunOutlined, MoonOutlined } from '@ant-design/icons';
 import Auth from '../auth/Auth';
 
+
 const Header = () => {
     const location = useLocation();
     const { theme, toggleTheme } = useContext(ThemeContext);
@@ -16,7 +17,8 @@ const Header = () => {
                 {location.pathname !== "/" && <NavLink to="/">Home</NavLink>}
                 <NavLink to="todo">ToDo List</NavLink>
                 <NavLink to="products">Products</NavLink>
-                <NavLink to="magicball">Magic Ball</NavLink>                
+                <NavLink to="magicball">Magic Ball</NavLink>     
+                <NavLink to="users">Users</NavLink>           
             </nav>
 
             <Space size={'middle'}>
