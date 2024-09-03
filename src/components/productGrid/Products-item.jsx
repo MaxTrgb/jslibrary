@@ -13,10 +13,9 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
         setLiked(likedItems.includes(id?.toString()));
     }, [id]);
     
-
-    const handleLike = () => {        
+    const handleLike = () => {
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        const idStr = id.toString(); 
+        const idStr = id.toString();
     
         let updatedLikedItems;
         if (liked) {
@@ -26,9 +25,10 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
         }
         localStorage.setItem('likedItems', JSON.stringify(updatedLikedItems));
         setLiked(!liked);
-
+    
         window.dispatchEvent(new Event('storage'));
-    };    
+    };
+        
     
 
     const handleMouseEnter = () => {

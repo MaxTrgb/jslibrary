@@ -20,19 +20,29 @@ const LikedItemsPage = () => {
     };
 
     useEffect(() => {
-        const storedLikedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        const fetchLikedProducts = async () => {
+            try {
+                const storedLikedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+                setLikedItems(storedLikedItems);
 
-        setLikedItems(storedLikedItems);
-        setProducts(sortProducts(sortCriteria, storedProducts));
+                const response = await fetch('https://fakestoreapi.com/products');
+                const apiProducts = await response.json();
 
-        console.log('Liked Items:', storedLikedItems);
-        console.log('Stored Products:', storedProducts);
-    }, [sortCriteria]); 
+                
+                const likedProducts = apiProducts.filter(product => 
+                    storedLikedItems.includes(product.id.toString())
+                );
 
-    useEffect(() => {
-        setProducts((prevProducts) => sortProducts(sortCriteria, prevProducts));
+                setProducts(sortProducts(sortCriteria, likedProducts));
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchLikedProducts();
     }, [sortCriteria]);
+
+    
 
     const toggleView = () => {
         setIsGridView(!isGridView);
@@ -51,14 +61,14 @@ const LikedItemsPage = () => {
             <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 {likedProducts.map(product => (
                     <ProductsItem
-                        key={product.id}
-                        id={product.id}
-                        imgSrc={product.imgSrc}
-                        title={product.title}
-                        price={product.price}
-                        items={product.items}
-                        details={product.details}
-                        isGridView={isGridView}
+                    key={product.id}
+                    id={product.id}
+                    imgSrc={product.image}
+                    title={product.title}
+                    price={product.price}
+                    items={product.rating.count}
+                    details={product.description}
+                    isGridView={isGridView}
                     />
                 ))}
             </div>
