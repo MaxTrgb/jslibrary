@@ -20,17 +20,31 @@ const ProductGrid = () => {
     };
 
     useEffect(() => {
-        const storedProducts = localStorage.getItem('products');
-        let initialProducts = storedProducts ? JSON.parse(storedProducts) : productInfo;
-        setProducts(sortProducts(sortCriteria, initialProducts));
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch('https://fakestoreapi.com/products');
+                const apiProducts = await response.json();
 
-        if (!storedProducts) {
-            localStorage.setItem('products', JSON.stringify(productInfo));
-        }
-    }, [sortCriteria]); 
+                
+                const mappedProducts = apiProducts.map(product => ({
+                    id: product.id,
+                    imgSrc: product.image,
+                    title: product.title,
+                    price: product.price,
+                    details: product.description,
+                    items: product.rating.count
+                }));
 
-    useEffect(() => {
-        setProducts((prevProducts) => sortProducts(sortCriteria, prevProducts));
+                const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+                const combinedProducts = [...mappedProducts, ...storedProducts];
+
+                setProducts(sortProducts(sortCriteria, combinedProducts));
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts();
     }, [sortCriteria]);
 
 
@@ -38,6 +52,7 @@ const ProductGrid = () => {
     const toggleView = () => {
         setIsGridView(!isGridView);
     };
+
 
     const addProduct = (title, imgSrc, price, details, items) => {
         const newProduct = {

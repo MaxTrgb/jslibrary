@@ -56,7 +56,6 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items }) => {
                 <p id='check'><CheckAvailable items={items} /></p>
                 <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>                
             </div>
-
         </div>
     );
 }
