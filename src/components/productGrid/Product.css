@@ -34,13 +34,14 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
-    width: 220px;
-    max-width: 100%;
+    padding: 20px;
+    width: 100%;
     
 }
 .gridContainer .item:hover .productDetails {
     visibility: visible;
     transition: 1s;
+    width: 100%;
 }
 
 .gridContainer .item:hover {
