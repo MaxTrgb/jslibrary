@@ -11,9 +11,9 @@ const ProductGrid = () => {
 
     const calculatePosition = (index) => {
         const itemsPerRow = 6; 
-        const itemWidth = 300;
+        const itemWidth = 250;
         const itemHeight = 550;
-        const gap = 20;
+        const gap = 10;
         const row = Math.floor(index / itemsPerRow);
         const column = index % itemsPerRow;
 
