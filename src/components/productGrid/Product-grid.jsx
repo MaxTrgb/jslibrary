@@ -9,6 +9,19 @@ const ProductGrid = () => {
     const [isGridView, setIsGridView] = useState(true);
     const [sortCriteria, setSortCriteria] = useState('name');
 
+    const calculatePosition = (index) => {
+        const itemsPerRow = 6; 
+        const itemWidth = 240;
+        const itemHeight = 550;
+        const gap = 10;
+        const row = Math.floor(index / itemsPerRow);
+        const column = index % itemsPerRow;
+
+        return {
+            top: `${row * (itemHeight + gap)}px`,
+            left: `${column * (itemWidth + gap)}px`
+        };
+    };
     const sortProducts = (criteria, products) => {
         let sortedProducts;
         if (criteria === 'name') {
@@ -77,19 +90,23 @@ const ProductGrid = () => {
                 isGridView={isGridView}
                 setSortCriteria={setSortCriteria}
             />
-            <div className={isGridView ? 'gridContainer' : 'listContainer'}>
-                {products.map(product => (
-                    <ProductsItem
-                        key={product.id}
-                        id={product.id}
-                        imgSrc={product.imgSrc}
-                        title={product.title}
-                        price={product.price}
-                        items={product.items}
-                        details={product.details}
-                        isGridView={isGridView}
-                    />
-                ))}
+           <div className={isGridView ? 'gridContainer' : 'listContainer'}>
+                {products.map((product, index) => {
+                    const position = calculatePosition(index);
+                    return (
+                        <ProductsItem
+                            key={product.id}
+                            id={product.id}
+                            imgSrc={product.imgSrc}
+                            title={product.title}
+                            price={product.price}
+                            items={product.items}
+                            details={product.details}
+                            isGridView={isGridView}
+                            style={position} 
+                        />
+                    );
+                })}
             </div>
         </div>
     );
