@@ -89,6 +89,7 @@ const ProductGrid = () => {
                 toggleView={toggleView}
                 isGridView={isGridView}
                 setSortCriteria={setSortCriteria}
+                
             />
            <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 {products.map((product, index) => {

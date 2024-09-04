@@ -28,10 +28,16 @@ const LikedItemsPage = () => {
                 const response = await fetch('https://fakestoreapi.com/products');
                 const apiProducts = await response.json();
 
-                
-                const likedProducts = apiProducts.filter(product => 
+                const likedProducts = apiProducts.filter(product =>
                     storedLikedItems.includes(product.id.toString())
-                );
+                ).map(product => ({
+                    id: product.id,
+                    imgSrc: product.image,
+                    title: product.title,
+                    price: product.price,
+                    details: product.description,
+                    items: product.rating.count
+                }));
 
                 setProducts(sortProducts(sortCriteria, likedProducts));
             } catch (error) {
@@ -42,14 +48,26 @@ const LikedItemsPage = () => {
         fetchLikedProducts();
     }, [sortCriteria]);
 
-    
+
 
     const toggleView = () => {
         setIsGridView(!isGridView);
     };
 
     const likedProducts = products.filter(product => likedItems.includes(product.id.toString()));
+    const calculatePosition = (index) => {
+        const itemsPerRow = 6;
+        const itemWidth = 240;
+        const itemHeight = 550;
+        const gap = 10;
+        const row = Math.floor(index / itemsPerRow);
+        const column = index % itemsPerRow;
 
+        return {
+            top: `${row * (itemHeight + gap)}px`,
+            left: `${column * (itemWidth + gap)}px`
+        };
+    };
     return (
         <div className="product">
             <LikedProductHeader
@@ -59,18 +77,22 @@ const LikedItemsPage = () => {
             />
             <h1>Liked Products:</h1>
             <div className={isGridView ? 'gridContainer' : 'listContainer'}>
-                {likedProducts.map(product => (
-                    <ProductsItem
-                    key={product.id}
-                    id={product.id}
-                    imgSrc={product.image}
-                    title={product.title}
-                    price={product.price}
-                    items={product.rating.count}
-                    details={product.description}
-                    isGridView={isGridView}
-                    />
-                ))}
+                {likedProducts.map((product, index) => {
+                    const position = calculatePosition(index);
+                    return (
+                        <ProductsItem
+                            key={product.id}
+                            id={product.id}
+                            imgSrc={product.imgSrc}
+                            title={product.title}
+                            price={product.price}
+                            items={product.items}
+                            details={product.details}
+                            isGridView={isGridView}
+                            style={position}
+                        />
+                    );
+                })}
             </div>
         </div>
     );
