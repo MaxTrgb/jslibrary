@@ -57,7 +57,7 @@ const LikedItemsPage = () => {
     const likedProducts = products.filter(product => likedItems.includes(product.id.toString()));
     const calculatePosition = (index) => {
         const itemsPerRow = 6;
-        const itemWidth = 240;
+        const itemWidth = 250;
         const itemHeight = 550;
         const gap = 10;
         const row = Math.floor(index / itemsPerRow);
@@ -76,6 +76,7 @@ const LikedItemsPage = () => {
                 setSortCriteria={setSortCriteria}
             />
             <h1>Liked Products:</h1>
+            
             <div className={isGridView ? 'gridContainer' : 'listContainer'}>
                 {likedProducts.map((product, index) => {
                     const position = calculatePosition(index);
