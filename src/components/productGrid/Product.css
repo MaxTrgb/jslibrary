@@ -135,8 +135,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 10px;
+    max-width: 100%;
+   
 }
 
 .item p:first-of-type {
