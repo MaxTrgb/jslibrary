@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Home = () => {
+
+    // const getPosts = async () => {
+    //     const response = await fetch('http://127.0.0.1:4000/api/posts');
+    //     const data = await response.json();
+    //     console.log(data);
+    // };
+
+    // useEffect(() => {
+    //     getPosts();
+    // }, []);
+
     return (
         <div className='homeContentConatainer'>
             <p>Welcome to Home Page</p>
