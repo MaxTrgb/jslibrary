@@ -87,7 +87,14 @@ const SingleItem = () => {
 
         message.success('Feedback submitted successfully');
     };
+    const handleDeleteFeedback = (indexToDelete) => {
+        const updatedFeedbacks = feedbacks.filter((_, index) => index !== indexToDelete);
+        setFeedbacks(updatedFeedbacks);
+        localStorage.setItem(`feedbacks_${id}`, JSON.stringify(updatedFeedbacks));
 
+        message.success('Feedback deleted successfully');
+    };
+    
     if (!product) return <div>Loading...</div>;
 
     const { imgSrc, title, price, details, items } = product;
@@ -144,6 +151,12 @@ const SingleItem = () => {
                             <div key={index} className='singleFeedback'>
                                 <p><strong>{fb.name}</strong> (Rating: {fb.rating} stars)</p>
                                 <p>{fb.feedback}</p>
+                                <Button 
+                                    type="link" 
+                                    onClick={() => handleDeleteFeedback(index)} 
+                                    style={{ color: 'red' }}>
+                                    Delete Feedback
+                                </Button>
                                 <hr />
                             </div>
                         ))
