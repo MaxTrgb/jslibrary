@@ -1,8 +1,7 @@
 .gridContainer {
     position: relative;
     width: 100%;
-    margin-top: 20px;
-    
+    margin-top: 20px;    
 }
 
 .gridContainer .item {
@@ -62,6 +61,7 @@
     transform: scale(1.1);
     z-index: 1000;
     height: auto;
+    cursor: pointer;
 }
 
 .gridContainer .likeButton {
@@ -134,6 +134,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
 }
 
 .item p:first-of-type {
@@ -292,4 +295,73 @@
 #check button:hover {
     border-color: lightblue;
     box-shadow: 3px 5px 2px gray;
+}
+
+.singleItemHeader{
+    background-color: gainsboro;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 50px 10px 50px;
+}
+.singleItemHeader button{
+    border-style: none;
+    background-color: white;
+    height: 50px;
+    width: 150px;
+    border-radius: 50px;
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, outline 0.3s ease;
+    font-family: 'Dosis';
+    font-weight: 700;
+    font-size: large;
+    margin: 10px;
+}
+.singleItemPage{
+    display: flex;
+    flex-direction: column;   
+    width: 100%;
+    margin-top: 20px;
+}
+.singleItem{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;    
+    max-width: 100%;
+    border-radius: 20px;
+    background-color: gainsboro;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.singleItemImgContainer img{
+    object-fit: contain;
+    width: 500px;
+    height: 500px;
+    margin: 30px;
+    max-width: 100%;
+    max-height: 100%;
+}
+.singleItemPropertiesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    width: 50%;
+}
+.singleProductDetails{
+    text-align: center;
+    width: 100%;
+    margin: 20px; 
+}
+.feedbackContainer{
+    display: flex;
+    flex-direction: column;   
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
 }

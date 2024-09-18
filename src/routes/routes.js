@@ -10,6 +10,7 @@ import Users from '../pages/users/Users';
 import { getUsers } from '../loaders/usersLoaders';
 import User from '../pages/users/User';
 import { getUser } from '../loaders/usersLoaders';
+import SingleItem from '../components/productGrid/Single-item';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductGrid />
+      },
+      {
+        path: "/products/:id",  
+        element: <SingleItem />
       },
       {
         path: "/magicball",
