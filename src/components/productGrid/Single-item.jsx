@@ -83,7 +83,7 @@ const SingleItem = () => {
 
         setName('');
         setFeedback('');
-        setRating(5);
+        setRating(rating);
 
         message.success('Feedback submitted successfully');
     };
