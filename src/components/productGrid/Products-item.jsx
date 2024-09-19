@@ -70,7 +70,7 @@ const ProductsItem = ({ id, imgSrc, title, price, details, items, style }) => {
             <div className='propertiesContainer'>
                 <img src={imgSrc} alt="" />
                 <h3>{title}</h3>
-                <Rate disabled value={rating}/>
+                <Rate disabled value={rating} className='listRating'/>
                 <p id='price'>{price} $</p>
                 <p id='check'><CheckAvailable items={items} /></p>
                 <p className={`productDetails ${hovered ? 'hovered' : ''}`}>{details}</p>
