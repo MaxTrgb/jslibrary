@@ -11,6 +11,7 @@ import { getUsers } from '../loaders/usersLoaders';
 import User from '../pages/users/User';
 import { getUser } from '../loaders/usersLoaders';
 import SingleItem from '../components/productGrid/Single-item';
+import Posts from '../pages/posts/Posts';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: "/posts",
+        element: <Posts />
       },
       {
         path: "/todo",

@@ -170,11 +170,11 @@
     z-index: 1;
     background-color: gainsboro;
     width: 400px;
-    height: 500px;
+    height: 600px;
     align-items: center;
     margin: 10px;
     border-radius: 10px;
-    margin-top: 70px;
+    margin-top: 300px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 

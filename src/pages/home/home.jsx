@@ -20,6 +20,8 @@ const Home = () => {
                 <li><a href="/todo">ToDo List</a></li>
                 <li><a href="/products">Products shop</a></li>
                 <li><a href="/magicball">Magic Ball</a></li>
+                <li><a href="/users">Users</a></li>
+                <li><a href="/posts">Posts</a></li>
             </ul>
         </div>
     );
