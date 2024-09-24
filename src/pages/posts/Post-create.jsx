@@ -6,27 +6,25 @@ const PostCreate = ({ onAddPost }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        
+
+
         const newPost = {
             title: title,
             body: body
         };
 
-     
         onAddPost(newPost);
 
-        
         setTitle('');
         setBody('');
     };
 
     return (
-        <div>
+        <div className="postCreateContainer">
             <h1>Create Post</h1>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
+            <form className='postCreate' onSubmit={handleSubmit}>
+                <input
+                    type="text"
                     placeholder="Post Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
