@@ -2,6 +2,8 @@ import { Formik, Field, Form, ErrorMessage} from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import styles from './Form.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../thunks/authThunk';
 
 const initialValues = {
     
@@ -15,14 +17,20 @@ const LoginSchema = Yup.object().shape({
     password: Yup.string().min(4).max(20).required(),
     
 })
-const submitHandler = (values, formikBag) => {
-    console.log(values);
-    formikBag.resetForm();
-}
+
 const Login = ({ toggleForm }) => {
+    const authUser = useSelector(state => state.auth.user);
+    const dispatch = useDispatch();
+
+    const submitHandler = (values, formikBag) => {
+        console.log(values);
+        dispatch(login(values));
+        formikBag.resetForm();
+    }
+    
     return (
         <div className={styles.loginForm}>
-            <h2>Login</h2>
+            <h2>Login {authUser.name}</h2>
             <Formik
                 initialValues={initialValues}
                 onSubmit={submitHandler}
