@@ -4,16 +4,17 @@ import './index.css';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/routes';
 import ThemeProvider from './providers/themeProvider';
-
+import { Provider } from 'react-redux';
+import store from './store/index.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  // <React.StrictMode>
-  // <ThemeContext.Provider value="light">
-  <ThemeProvider>
-    <RouterProvider router={router} />
-  </ThemeProvider>
-  // </ThemeContext.Provider>
-  // </React.StrictMode>
+
+  <Provider store={store}>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </Provider>
+
 );
