@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostItem = ({ title, body }) => {
+const PostItem = ({ title, body, onDelete, onEdit }) => {
     return (
         <div className='postItemContainer'>
             <div>
@@ -8,8 +8,8 @@ const PostItem = ({ title, body }) => {
                 <p>{body}</p>
             </div>
             <div className='postItemButtons'>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={onEdit}>Edit</button>
+                <button onClick={onDelete}>Delete</button>
             </div>
 
         </div>

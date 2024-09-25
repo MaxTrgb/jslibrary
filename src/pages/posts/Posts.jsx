@@ -13,6 +13,7 @@ const Posts = () => {
                 const postsData = await response.json();
 
                 const mappedPosts = postsData.map(post => ({
+                    _id: post._id,
                     title: post.title,
                     body: post.body
                 }));
@@ -48,16 +49,70 @@ const Posts = () => {
             console.error('Error adding post:', error);
         }
     };
-
+    const handleDelete = async (index) => {
+        const postId = posts[index]._id; 
+    
+        try {
+            const response = await fetch(`http://localhost:4000/api/posts/${postId}`, {
+                method: 'DELETE'
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to delete post');
+            }
+    
+            
+            setPosts(prevPosts => prevPosts.filter((_, i) => i !== index));
+        } catch (error) {
+            console.error('Error deleting post:', error);
+        }
+    };
+    const handleEdit = async (index) => {
+        const postId = posts[index]._id;        
+        const newBody = prompt('Enter new body:', posts[index].body);
+    
+        if (newBody) {
+            try {
+                const response = await fetch(`http://localhost:4000/api/posts/${postId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ body: newBody }),
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Failed to update post');
+                }
+    
+             
+                const updatedPost = await response.json();
+                setPosts(prevPosts =>
+                    prevPosts.map((post, i) =>
+                        i === index ? updatedPost : post
+                    )
+                );
+            } catch (error) {
+                console.error('Error updating post:', error);
+            }
+        }
+    };
+    
     return (
         <div className='postsContainer'>
-            <h1>Posts</h1>
-            {posts.map((post, index) => (
-                <PostItem key={index} title={post.title} body={post.body} />
-            ))}
+        <h1>Posts</h1>
+        {posts.map((post, index) => (
+            <PostItem
+                key={index}
+                title={post.title}
+                body={post.body}
+                onDelete={() => handleDelete(index)}
+                onEdit={() => handleEdit(index)}
+            />
+        ))}
 
-            <PostCreate onAddPost={addPost} />
-        </div>
+        <PostCreate onAddPost={addPost} />
+    </div>
     );
 }
 
